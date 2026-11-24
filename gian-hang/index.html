@@ -1,0 +1,235 @@
+<!doctype html>
+<html lang="vi" class="is-loading">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#1B0B03">
+<title>Gian hàng · IC JCI Khanhhoa 2027</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png">
+<link rel="icon" type="image/png" sizes="192x192" href="/assets/favicon-192.png">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<link rel="stylesheet" href="/css/site.css">
+<link rel="stylesheet" href="/css/booth.css">
+</head>
+<body class="page-booth">
+<div id="pageLoader" role="status" aria-live="polite"><i></i><span>Đang tải…</span></div>
+<script>
+/* Phòng khi có lỗi bất ngờ: không để màn hình tải treo mãi */
+addEventListener("error", () => setTimeout(() => document.documentElement.classList.remove("is-loading"), 1500));
+setTimeout(() => document.documentElement.classList.remove("is-loading"), 10000);
+</script>
+
+<!-- Thông báo trang mẫu (chỉ hiện ở /gian-hang/ không có ?s=) -->
+<div class="notice" id="notice" role="dialog" aria-modal="true" aria-labelledby="noticeT">
+  <div class="notice-box glass-light">
+    <div class="notice-ic">i</div>
+    <h3 id="noticeT">Đây là trang dữ liệu mẫu</h3>
+    <p>Tên gian hàng, sản phẩm, giá, thông tin liên hệ và hình ảnh trên trang chỉ để minh họa giao diện, không phải thông tin thật.</p>
+    <button class="btn" id="noticeOk" type="button">Đã hiểu, xem trang</button>
+  </div>
+</div>
+
+<div id="site-nav"></div>
+
+<!-- 1. BANNER -->
+<section class="hero" id="top">
+  <img class="bg" id="cover" alt="" fetchpriority="high">
+  <div class="wrap">
+    <div class="hero-grid">
+      <div class="rv">
+        <span class="chip glass">IC JCI Khanhhoa 2027 · Business Matching</span>
+        <h1 id="heroName"></h1>
+        <p class="slogan" id="slogan"></p>
+        <div class="actions">
+          <a class="btn btn--lg" id="heroCall"><svg class="ico"><use href="#b-phone"/></svg>&nbsp;Gọi ngay</a>
+          <a class="btn btn--lg btn--ghost" href="#ket-noi"><svg class="ico"><use href="#b-chat"/></svg>&nbsp;Liên hệ ngay</a>
+          <button type="button" class="btn btn--lg btn--ghost" id="shareBtn" aria-haspopup="dialog"><svg class="ico"><use href="#b-share"/></svg>&nbsp;Chia sẻ</button>
+        </div>
+        <div class="facts" id="facts"></div>
+      </div>
+      <div class="logo-card glass rv">
+        <img id="bigLogo" alt="">
+        <div class="n" id="logoName"></div>
+        <div class="t" id="logoGroup"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<main>
+  <!-- 2. CÂU CHUYỆN GIAN HÀNG -->
+  <section class="about" id="gioi-thieu">
+    <div class="wrap">
+      <div class="about-card rv">
+        <div class="about-grid">
+          <div class="left">
+            <span class="kicker">Về chúng tôi</span>
+            <h2 class="title">Câu chuyện doanh nghiệp</h2>
+            <div class="bar-gold"></div>
+            <p class="intro clamp" id="intro"></p>
+            <button class="more-btn" id="introMore" hidden>Xem thêm</button>
+          </div>
+          <div class="photo" id="aboutPhoto">
+            <div class="float glass-light">
+              <img id="floatLogo" alt="">
+              <div><b id="floatName"></b><span id="floatSub"></span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. SẢN PHẨM NỔI BẬT -->
+  <section class="hl-sec" id="san-pham">
+    <div class="wrap">
+      <span class="kicker">Sản phẩm nổi bật</span>
+      <h2 class="title">Sản phẩm &amp; dịch vụ</h2>
+      <div class="bar-gold"></div>
+      <div class="hl-grid" id="highlights"></div>
+    </div>
+  </section>
+
+  <!-- 4. CHI TIẾT SẢN PHẨM -->
+  <section class="dt-sec" id="chi-tiet">
+    <div class="wrap">
+      <span class="kicker">Chi tiết</span>
+      <h2 class="title">Thông tin sản phẩm</h2>
+      <div class="bar-gold"></div>
+      <div class="dt-list" id="details"></div>
+    </div>
+  </section>
+
+  <!-- 5. ĐỂ LẠI THÔNG TIN KẾT NỐI -->
+  <section class="lead" id="ket-noi">
+    <div class="wrap">
+      <div class="lead-box rv">
+        <img id="leadPic" alt="" loading="lazy">
+        <div class="lead-copy">
+          <span class="chip glass">Kết nối hợp tác</span>
+          <h2>Liên hệ gian hàng</h2>
+          <p>Gọi trực tiếp, nhắn tin qua các kênh bên dưới, hoặc để lại thông tin để chủ gian hàng liên hệ lại với bạn.</p>
+          <div class="ct-list" id="ctList"></div>
+          <div class="ct-social" id="ctSocial"></div>
+        </div>
+        <div class="form glass-light">
+          <form id="leadForm" novalidate>
+            <h3>Để lại thông tin kết nối</h3>
+            <p class="hint">Chỉ mất khoảng 1 phút.</p>
+
+            <label for="ten">Họ tên / đơn vị</label>
+            <input type="text" id="ten" maxlength="80" autocomplete="name" placeholder="Nguyễn Văn A / Công ty ABC">
+            <div class="err" id="e-ten"></div>
+
+            <label for="lienhe">Phương thức liên hệ (SĐT, Zalo hoặc email)</label>
+            <input type="text" id="lienhe" maxlength="120" autocomplete="off" placeholder="0905... hoặc khach@email.com">
+            <div class="err" id="e-lienhe"></div>
+
+            <label for="nhucau">Nhu cầu kết nối</label>
+            <textarea id="nhucau" maxlength="300" placeholder="Ví dụ: cần báo giá, muốn hẹn gặp trao đổi hợp tác…"></textarea>
+            <div class="count"><span id="cnt">0</span>/300</div>
+            <div class="err" id="e-nhucau"></div>
+
+            <label class="consent">
+              <input type="checkbox" id="dongy">
+              <span>Tôi đồng ý cung cấp thông tin trên để chủ gian hàng liên hệ về nhu cầu hợp tác. <a href="#" id="showTerms">Xem điều khoản</a></span>
+            </label>
+            <div class="err" id="e-dongy"></div>
+
+            <div class="err" id="e-submit"></div>
+            <button class="btn" type="submit" id="leadBtn">Gửi thông tin</button>
+            <details class="terms" id="termsBox">
+              <summary>Điều khoản</summary>
+              <p>Nội dung điều khoản sẽ được cập nhật.</p>
+            </details>
+          </form>
+          <div class="done" id="done" hidden>
+            <div class="ok">✓</div>
+            <h3>Đã gửi thành công</h3>
+            <p class="hint">Cảm ơn bạn. Chủ gian hàng sẽ liên hệ lại sớm.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. VỀ CHƯƠNG TRÌNH (dùng chung mọi gian hàng) -->
+  <section class="event" id="chuong-trinh-ic">
+    <img id="eventPic" alt="" loading="lazy">
+    <div class="wrap">
+      <div class="ev-top">
+        <div class="left rv">
+          <span class="kicker">Về chương trình</span>
+          <h2 class="title ev-title">Lễ nhậm chức JCI&nbsp;Khanhhoa 2027<br>Lead&nbsp;Together</h2>
+          <div class="bar-gold"></div>
+          <p>Lễ nhậm chức nhiệm kỳ 2027 của JCI Khanhhoa (Installation Ceremony) diễn ra ngày 26/12/2026 tại TTC Hotel, Nha Trang, gồm phần lễ và Gala Dinner.</p>
+          <p>Các gian hàng của nhà tài trợ nằm trong khung Business Matching từ 15:00 đến 16:00, nơi doanh nghiệp kết nối trực tiếp với hội viên và khách mời.</p>
+        </div>
+        <div class="ev-info glass rv">
+          <div class="row"><div class="ic"><svg class="ico"><use href="#b-cal"/></svg></div><div><small>Ngày</small><b>Thứ Bảy, 26/12/2026</b></div></div>
+          <div class="row"><div class="ic"><svg class="ico"><use href="#b-clock"/></svg></div><div><small>Thời gian</small><b>13:00 – 21:00</b></div></div>
+          <div class="row"><div class="ic"><svg class="ico"><use href="#b-pin"/></svg></div><div><small>Địa điểm</small><b>Sảnh Loyar, Tầng 3, TTC Hotel, 4 Pasteur, Nha Trang</b></div></div>
+          <div class="row"><div class="ic"><svg class="ico"><use href="#b-users"/></svg></div><div><small>Đơn vị tổ chức</small><b>JCI Khanhhoa</b></div></div>
+        </div>
+      </div>
+      <div class="pillars">
+        <div class="pl glass rv"><div class="n">01</div><h4>JCI Award &amp; Recognition</h4><p>Tổng kết nhiệm kỳ, vinh danh cá nhân và dự án xuất sắc.</p></div>
+        <div class="pl glass rv"><div class="n">02</div><h4>Business Matching</h4><p>Gian hàng nhà tài trợ, nơi doanh nghiệp kết nối cùng hội viên.</p></div>
+        <div class="pl glass rv"><div class="n">03</div><h4>Installation Ceremony</h4><p>Nghi thức nhậm chức, ra mắt Ban điều hành nhiệm kỳ 2027.</p></div>
+        <div class="pl glass rv"><div class="n">04</div><h4>Gala Dinner</h4><p>Đêm tài năng của hội viên trong chương trình Gala Dinner.</p></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<div id="site-foot"></div>
+
+<!-- Thanh liên hệ nhanh (chỉ hiện trên điện thoại) -->
+<nav class="mbar glass-light" id="mbar" aria-label="Liên hệ nhanh"></nav>
+
+<!-- Biểu tượng của trang gian hàng (tiền tố b- để không trùng với biểu tượng ở chân trang) -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="b-phone" viewBox="0 0 24 24"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></symbol>
+  <symbol id="b-chat" viewBox="0 0 24 24"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12z"/></symbol>
+  <symbol id="b-pin" viewBox="0 0 24 24"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></symbol>
+  <symbol id="b-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
+  <symbol id="b-cal" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 10h18"/></symbol>
+  <symbol id="b-users" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20a6.5 6.5 0 0 1 13 0"/><path d="M16 4.5a3.5 3.5 0 0 1 0 7M18 14a6 6 0 0 1 3.5 6"/></symbol>
+  <symbol id="b-fb" viewBox="0 0 24 24"><path d="M15 3h-2.5A3.5 3.5 0 0 0 9 6.5V10H6.5v3.5H9V21h3.5v-7.5H15l.6-3.5h-3.1V7a1 1 0 0 1 1-1H15z"/></symbol>
+  <symbol id="b-web" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></symbol>
+  <symbol id="b-tiktok" viewBox="0 0 24 24"><path d="M14 3v11.5a3.5 3.5 0 1 1-3.5-3.5"/><path d="M14 3c.6 2.8 2.6 4.6 5 5"/></symbol>
+  <symbol id="b-link" viewBox="0 0 24 24"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1"/><path d="M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/></symbol>
+  <symbol id="b-share" viewBox="0 0 24 24"><circle cx="18" cy="5" r="2.6"/><circle cx="6" cy="12" r="2.6"/><circle cx="18" cy="19" r="2.6"/><path d="M8.3 10.7l7.4-4.2M8.3 13.3l7.4 4.2"/></symbol>
+  <symbol id="b-arrow" viewBox="0 0 24 24"><path d="M12 5v14M6 13l6 6 6-6"/></symbol>
+</svg>
+
+<!-- Pop-up chia sẻ: mã QR + sao chép + chia sẻ qua ứng dụng khác -->
+<div class="sharebox-bg" id="shareModal" hidden>
+  <div class="sharebox glass-light" role="dialog" aria-modal="true" aria-labelledby="shareTitle">
+    <button type="button" class="x" id="shareClose" aria-label="Đóng">&times;</button>
+    <h3 id="shareTitle">Chia sẻ gian hàng</h3>
+    <p class="sub" id="shareName"></p>
+    <div class="qr-wrap"><canvas id="qrCanvas" width="400" height="400" role="img" aria-label="Mã QR của gian hàng"></canvas></div>
+    <div class="share-link">
+      <input type="text" id="shareLink" readonly aria-label="Đường dẫn gian hàng">
+      <button type="button" class="btn" id="shareCopy">Sao chép</button>
+    </div>
+    <div class="share-acts">
+      <button type="button" class="btn" id="shareNative" hidden><svg class="ico"><use href="#b-share"/></svg>&nbsp;Chia sẻ qua ứng dụng khác</button>
+      <button type="button" class="btn btn--line" id="shareDl">Tải mã QR về</button>
+    </div>
+  </div>
+</div>
+
+<script src="/js/vendor/qrcode.js"></script>
+<script src="/js/config.js"></script>
+<script src="/js/sample-booth.js"></script>
+<script src="/js/api.js"></script>
+<script src="/js/layout.js?v=5"></script>
+<script type="module" src="/js/booth.js"></script>
+</body>
+</html>

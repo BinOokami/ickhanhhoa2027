@@ -1,0 +1,264 @@
+{
+ "_ghi_chu": "Dữ liệu trang /nha-tai-tro/. goi = 4 thẻ gói. nhom = bảng quyền lợi, mỗi dòng: [tên quyền lợi, Đồng, Bạc, Vàng, Kim Cương]. Giá chữ số là triệu đồng.",
+ "goi": [
+  {
+   "key": "dong",
+   "ten": "NTT Đồng",
+   "gia": "1,5",
+   "gala": "1 suất Gala",
+   "ghi": ""
+  },
+  {
+   "key": "bac",
+   "ten": "NTT Bạc",
+   "gia": "3",
+   "gala": "1 suất Gala",
+   "ghi": ""
+  },
+  {
+   "key": "vang",
+   "ten": "NTT Vàng",
+   "gia": "5",
+   "gala": "2 suất Gala",
+   "ghi": "Tối đa 5 gói",
+   "noibat": true
+  },
+  {
+   "key": "kc",
+   "ten": "NTT Kim Cương",
+   "gia": "10",
+   "gala": "3 suất Gala",
+   "ghi": "Tối đa 1 gói",
+   "kc": true
+  }
+ ],
+ "nhom": [
+  {
+   "ten": "Trước sự kiện",
+   "dong": [
+    [
+     "Logo trên POSM (poster, thiệp, ấn phẩm)",
+     "Các bài chính",
+     "Các bài chính",
+     "Luôn có",
+     "Luôn có"
+    ],
+    [
+     "Bài giới thiệu chung NTT (album, có chạy quảng cáo)",
+     "Logo chung",
+     "Logo chung",
+     "Logo chung, to, nổi bật",
+     "Logo riêng"
+    ],
+    [
+     "Bài viết giới thiệu riêng NTT",
+     "Không",
+     "Không",
+     "Không",
+     "Có"
+    ],
+    [
+     "Hiện diện trên landing page sự kiện",
+     "Danh sách chung",
+     "Danh sách chung",
+     "Khu vực riêng: logo và 1 đoạn giới thiệu",
+     "Mục riêng: logo, 1 ảnh SP/DV và 1 đoạn giới thiệu"
+    ],
+    [
+     "Link từ landing page dẫn về trang chính thống (website, fanpage) của doanh nghiệp",
+     "Có",
+     "Có",
+     "Có",
+     "Có"
+    ],
+    [
+     "Hỗ trợ xây dựng landing page giới thiệu sản phẩm, dịch vụ của doanh nghiệp tại sự kiện",
+     "Có",
+     "Có",
+     "Có",
+     "Có"
+    ],
+    [
+     "Gắn hashtag doanh nghiệp lên các bài truyền thông",
+     "Không",
+     "Không",
+     "Có",
+     "Có"
+    ]
+   ]
+  },
+  {
+   "ten": "Trong sự kiện",
+   "dong": [
+    [
+     "Khu vực gian hàng giới thiệu tại sự kiện",
+     "Vị trí thường",
+     "Vị trí ưu tiên",
+     "Vị trí nổi bật",
+     "Vị trí đặc biệt"
+    ],
+    [
+     "Logo trên backdrop, standee chính của sự kiện",
+     "Có",
+     "Có",
+     "Có",
+     "Có"
+    ],
+    [
+     "Logo in trên standee dành riêng cho NTT",
+     "Có",
+     "Có",
+     "Lớn",
+     "Nổi bật"
+    ],
+    [
+     "Hashtag doanh nghiệp riêng ở khu chụp ảnh check-in",
+     "Không",
+     "Không",
+     "Không",
+     "Có"
+    ],
+    [
+     "Chiếu TVC tại khu gian hàng và teabreak",
+     "Tương đối",
+     "Tương đối",
+     "Nhiều",
+     "Nhiều nhất"
+    ],
+    [
+     "Vị trí ngồi đặc biệt tại sự kiện",
+     "Khu vực danh dự",
+     "Khu vực danh dự",
+     "Khu vực ưu tiên",
+     "Ưu tiên cao nhất"
+    ],
+    [
+     "MC nhắc tên cảm ơn trong phần lễ",
+     "Nhắc chung",
+     "Nhắc chung",
+     "Nhắc tên riêng",
+     "Nhắc tên riêng"
+    ],
+    [
+     "MC nhắc tên cảm ơn trong phần Gala",
+     "Nhắc tên riêng",
+     "Nhắc tên riêng",
+     "Nhắc tên riêng",
+     "Nhắc tên riêng"
+    ],
+    [
+     "Trao chứng nhận tri ân NTT trong Gala",
+     "Có",
+     "Có",
+     "Có",
+     "Có"
+    ],
+    [
+     "Suất tham dự tiệc Gala Dinner",
+     "1 suất",
+     "1 suất",
+     "2 suất",
+     "3 suất"
+    ],
+    [
+     "Phát biểu hoặc giới thiệu SP/DV trong Gala",
+     "Không",
+     "Không",
+     "Không",
+     "Có"
+    ]
+   ]
+  },
+  {
+   "ten": "Sau sự kiện (áp dụng cho mọi gói)",
+   "dong": [
+    [
+     "Bài cảm ơn NTT sau sự kiện",
+     "Chung",
+     "Chung",
+     "Riêng",
+     "Riêng"
+    ],
+    [
+     "TVC hoặc 1 bài giới thiệu doanh nghiệp riêng trên fanpage",
+     "Không",
+     "Không",
+     "Không",
+     "Có"
+    ],
+    [
+     "Bài cảm ơn trên website JCI Khanhhoa, dẫn link về trang doanh nghiệp",
+     "Không",
+     "Không",
+     "Có",
+     "Có"
+    ]
+   ]
+  }
+ ],
+ "hienvat": {
+  "tyle": "30%",
+  "mota": "Tỷ lệ tối đa của giá trị gói có thể đóng góp bằng hiện vật. Phần còn lại tài trợ bằng tiền mặt.",
+  "luuy": [
+   "Quy đổi thành quà tặng hoặc ấn phẩm cần thiết cho sự kiện.",
+   "Voucher không được tính vào giá trị hiện vật."
+  ],
+  "hangmuc": [
+   [
+    "Teabreak",
+    "Bánh ngọt, nước uống, trái cây và đồ ăn nhẹ phục vụ hội viên và khách mời trong các giờ giải lao giữa các phiên của chương trình."
+   ],
+   [
+    "Quà tặng mini game",
+    "Quà tặng cho các phần mini game và vòng quay may mắn trong Gala Dinner, dành cho hội viên và khách mời tham gia chương trình."
+   ],
+   [
+    "Setup layout, không gian",
+    "Thiết kế bố cục và trang trí không gian sự kiện: sân khấu, khu check-in, khu gian hàng, bàn tiệc, tạo không gian đồng bộ theo thông điệp Lead Together."
+   ],
+   [
+    "In ấn POSM, ấn phẩm",
+    "Poster, thiệp mời, backdrop, standee, bảng hiệu và các ấn phẩm truyền thông phục vụ sự kiện theo bộ nhận diện chung của chương trình."
+   ],
+   [
+    "Quay phim, chụp hình",
+    "Ghi hình toàn bộ chương trình: bộ ảnh sự kiện, ảnh khách mời và video tổng hợp dùng cho truyền thông sau sự kiện."
+   ],
+   [
+    "Thiết bị Ban tổ chức",
+    "Dây đeo, bảng tên, bộ đàm và các trang thiết bị điều phối khác phục vụ Ban tổ chức làm việc trong suốt chương trình."
+   ],
+   [
+    "Cúp, kỷ niệm chương, hoa và quà tri ân",
+    "Cúp, kỷ niệm chương, giấy chứng nhận cho phần Award & Recognition; hoa và quà tri ân dành cho Ban điều hành, diễn giả và khách mời."
+   ]
+  ]
+ },
+ "buoc": [
+  [
+   "Chọn gói và liên hệ Ban tổ chức",
+   "Doanh nghiệp chọn gói phù hợp, gửi thông tin đăng ký."
+  ],
+  [
+   "Thanh toán hoặc bàn giao hiện vật",
+   "Theo thông tin thanh toán bên cạnh hoặc do Ban tổ chức gửi."
+  ],
+  [
+   "Gửi logo, TVC, thông tin doanh nghiệp",
+   "Để Ban tổ chức lên ấn phẩm, bài truyền thông và landing page."
+  ],
+  [
+   "Đăng ký gian hàng (nếu có)",
+   "Gửi thông tin gian hàng (sản phẩm, dịch vụ). Ban tổ chức sẽ hướng dẫn đăng ký trang hiện diện Landing page cho gian hàng."
+  ],
+  [
+   "Gửi thông tin người tham dự sự kiện và Gala",
+   "Họ tên, chức danh của đại diện tham dự để Ban tổ chức đón tiếp chu đáo."
+  ],
+  [
+   "Đồng hành tại sự kiện 26/12",
+   "Gian hàng, TVC, MC nhắc tên, chứng nhận tri ân. Sau sự kiện nhận bài cảm ơn."
+  ]
+ ],
+ "luuy": "Đơn vị đăng ký sau thời điểm đăng bài hoặc in ấn sẽ không nhận phần quyền lợi truyền thông trước sự kiện đã phát hành, vẫn hưởng đầy đủ quyền lợi trong và sau sự kiện."
+}

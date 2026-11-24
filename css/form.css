@@ -1,0 +1,119 @@
+/* ===== form.css: form đăng ký + các pop-up (đang xử lý, cắt ảnh, điều khoản) ===== */
+/* ===== 7. Đăng ký tham dự: form + pop-up "đang xử lý" ===== */
+.reg{--sec-img:url("/assets/bg/bg-6.webp");
+     padding:clamp(72px,8vw,120px) 0}
+.reg__inner{width:min(820px,100% - clamp(40px,8vw,112px));margin-inline:auto}
+.reg__head{text-align:center;margin-bottom:clamp(24px,3.4vw,40px)}
+.reg__form{padding:clamp(22px,3.4vw,40px);border-radius:24px;background:rgba(27,11,3,.55);border:1px solid rgba(255,248,235,.24);
+     -webkit-backdrop-filter:blur(14px) saturate(140%);backdrop-filter:blur(14px) saturate(140%);box-shadow:inset 0 1px 0 rgba(255,255,255,.18),0 24px 60px rgba(0,0,0,.35)}
+.reg__grid{display:grid;grid-template-columns:1fr 1fr;gap:20px 22px}
+.field{display:grid;gap:8px;align-content:start;min-width:0}
+.field--full{grid-column:1/-1}
+.field__label{font-family:var(--display);font-weight:600;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,248,235,.82)}
+.field__label b{color:var(--gold);font-weight:700}
+/* ô nhập nền trắng, chữ tối */
+.field input:not([type=file]):not([type=checkbox]):not([type=radio]),.field select{width:100%;height:48px;padding:0 14px;border-radius:4px;border:1px solid #fff;
+     background:#fff;color:#1a0f00;font-family:var(--body);font-weight:500;font-size:15px;transition:border-color .2s,box-shadow .2s}
+.field input::placeholder{color:rgba(26,15,0,.42)}
+.field input:focus,.field select:focus{outline:none;border-color:var(--gold);box-shadow:0 0 0 3px rgba(254,210,34,.35)}
+.was-validated .field :is(input,select):invalid{border-color:#e5533d;box-shadow:0 0 0 3px rgba(229,83,61,.28)}
+.field__hint{font-family:var(--body);font-size:12.5px;line-height:1.5;color:rgba(255,248,235,.65)}
+/* ô tải ảnh chân dung (nền trắng như các ô nhập); bấm vào để chọn, chọn xong mở khung kéo/zoom để cắt */
+.upload{position:relative;display:flex;align-items:center;gap:16px;padding:14px;border-radius:4px;border:1px dashed rgba(255,248,235,.55);background:#fff;color:#1a0f00;cursor:pointer;transition:border-color .2s,box-shadow .2s}
+.upload:hover,.upload:focus-within{border-color:var(--gold);box-shadow:0 0 0 3px rgba(254,210,34,.35)}
+.upload.is-err{border-color:#e5533d;box-shadow:0 0 0 3px rgba(229,83,61,.28)}
+.upload input{position:absolute;inset:0;width:100%;height:100%;opacity:0;cursor:pointer}
+.upload__thumb{flex:none;width:64px;height:64px;border-radius:50%;background:center/cover no-repeat rgba(26,15,0,.07);border:1px solid rgba(26,15,0,.18);display:grid;place-items:center;font-size:24px;color:rgba(26,15,0,.4)}
+.upload__thumb:not(.has-img)::after{content:"+"}
+.upload__name{display:block;font-family:var(--display);font-weight:700;font-size:14px;color:#1a0f00;word-break:break-all}
+.upload .field__hint{display:block;color:rgba(26,15,0,.66)}
+.upload .field__hint.upload__err{color:#c2331f}
+/* khung cắt ảnh: kéo để di chuyển, thanh trượt hoặc cuộn chuột để zoom */
+.crop{position:fixed;inset:0;z-index:90;display:grid;place-items:center;padding:20px;background:rgba(27,11,3,.82);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
+.crop[hidden]{display:none}
+.crop__box{width:min(400px,100%);max-height:100%;overflow:auto;padding:24px;border-radius:24px;text-align:center;background:#2a1205;border:1px solid rgba(255,248,235,.3);box-shadow:0 28px 70px rgba(0,0,0,.5)}
+.crop__title{font-family:var(--head);font-weight:700;text-transform:uppercase;letter-spacing:.04em;font-size:22px;color:var(--gold)}
+.crop__hint{margin:8px 0 16px;font-family:var(--body);font-size:13px;line-height:1.55;color:rgba(255,248,235,.8)}
+.crop__stage{width:min(320px,100%);aspect-ratio:1;margin:0 auto;border-radius:4px;overflow:hidden;touch-action:none;cursor:grab;background:#000}
+.crop__stage:active{cursor:grabbing}
+.crop__stage:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+.crop__stage canvas{display:block;width:100%;height:100%}
+.crop__zoom{display:flex;align-items:center;gap:12px;width:min(320px,100%);margin:16px auto 0;color:rgba(255,248,235,.85);font-size:20px;line-height:1}
+.crop__zoom input{flex:1;accent-color:var(--amber)}
+.crop__actions{margin-top:20px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.crop__actions .btn{border:0;cursor:pointer}
+/* ô tick tham dự Gala có giá */
+.gala{display:flex;align-items:flex-start;gap:14px;padding:14px 16px;border-radius:4px;border:1px solid rgba(255,248,235,.3);background:rgba(27,11,3,.4);cursor:pointer;transition:border-color .2s}
+.gala:hover,.gala:focus-within{border-color:var(--gold)}
+.gala input{flex:none;width:20px;height:20px;margin-top:2px;accent-color:var(--amber)}
+.gala__title{display:block;font-family:var(--display);font-weight:700;font-size:15px;color:var(--ivory)}
+.gala__price{display:block;margin-top:4px;font-family:var(--body);font-size:13.5px;line-height:1.6;color:rgba(255,248,235,.85);white-space:nowrap}
+@media (max-width:560px){.gala__price{white-space:normal;font-size:12.5px}}
+.gala__price b{color:var(--gold);font-weight:600}
+/* ô đồng ý + nút gửi */
+.check{display:flex;align-items:flex-start;gap:12px;cursor:pointer;font-family:var(--body);font-size:13.5px;line-height:1.55;color:rgba(255,248,235,.85)}
+.check input{flex:none;width:18px;height:18px;margin-top:2px;accent-color:var(--amber)}
+.check label{cursor:pointer}
+.linkbtn{background:none;border:0;padding:0;font:inherit;color:var(--gold);text-decoration:underline;text-underline-offset:3px;cursor:pointer}
+.linkbtn:hover,.linkbtn:focus-visible{color:var(--amber)}
+/* pop-up điều khoản (nội dung cập nhật sau) */
+.dlg{position:fixed;inset:0;z-index:90;display:grid;place-items:center;padding:20px;background:rgba(27,11,3,.82);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
+.dlg[hidden]{display:none}
+.dlg__box{width:min(880px,100%);max-height:100%;overflow:auto;padding:28px 34px;border-radius:24px;background:#2a1205;border:1px solid rgba(255,248,235,.3);box-shadow:0 28px 70px rgba(0,0,0,.5)}
+.dlg__title{font-family:var(--head);font-weight:700;text-transform:uppercase;letter-spacing:.04em;font-size:24px;color:var(--gold)}
+.dlg__text{margin-top:12px;font-family:var(--body);font-size:14.5px;line-height:1.7;color:rgba(255,248,235,.88)}
+.dlg__text p+p{margin-top:12px}
+/* khung ngang: chữ chia 2 cột trên màn hình rộng, đoạn mở đầu trải suốt chiều ngang */
+@media (min-width:760px){
+  .dlg__text{column-count:2;column-gap:36px}
+  .dlg__text p{break-inside:avoid}
+  .dlg__text p:first-child{column-span:all}
+}
+.dlg__text b{color:var(--gold);font-weight:700}
+.dlg__text a{color:var(--gold);text-decoration:underline;text-underline-offset:3px}
+.dlg__text a[href^="tel"]{white-space:nowrap}
+.dlg__actions{margin-top:22px;display:flex;justify-content:flex-end}
+.dlg__actions .btn{border:0;cursor:pointer}
+.reg__submit{margin-top:clamp(22px,2.6vw,30px);display:flex;justify-content:center}
+.reg__submit .btn{min-width:240px;border:0;cursor:pointer}
+.reg__submit .btn{flex-direction:column;gap:3px}
+.reg__submit .btn[disabled]{opacity:.6;cursor:not-allowed;transform:none;box-shadow:none}
+.hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}   /* ô bẫy bot: người thật không thấy, không điền */
+@media (max-width:640px){.reg__grid{grid-template-columns:1fr}}
+/* pop-up "thông tin đang được xử lý": phủ kín màn hình, không đóng bằng click nền hay phím Esc khi đang gửi */
+.ov{position:fixed;inset:0;z-index:100;display:grid;place-items:center;padding:20px;background:rgba(27,11,3,.8);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
+.ov[hidden]{display:none}
+.ov__box{width:min(400px,100%);padding:32px 28px;border-radius:24px;text-align:center;outline:none;
+     background:linear-gradient(145deg,rgba(255,248,235,.18),rgba(255,248,235,.07));border:1px solid rgba(255,248,235,.3);box-shadow:0 28px 70px rgba(0,0,0,.45)}
+.ov__spin{width:44px;height:44px;margin:0 auto 18px;border-radius:50%;border:4px solid rgba(255,248,235,.25);border-top-color:var(--gold);animation:spin 1s linear infinite}
+.ov__spin[hidden]{display:none}
+@keyframes spin{to{transform:rotate(360deg)}}
+.ov__text{font-family:var(--body);font-size:15px;line-height:1.65;color:var(--ivory)}
+.ov__btn{margin-top:20px;border:0;cursor:pointer}
+.ov__btn[hidden]{display:none}
+
+
+/* dòng nhỏ phía trên tiêu đề: dài nên cho rộng hết khung và nằm 1 hàng */
+.reg__label{width:100%;letter-spacing:.18em;white-space:nowrap}
+@media (max-width:720px){.reg__label{white-space:normal;text-align:center;letter-spacing:.12em}.reg__label::before,.reg__label::after{display:none}}
+
+/* thông tin chuyển khoản Gala (hiện khi tick) */
+.gala__bank{margin-top:10px;padding:14px 16px;border-radius:4px;border:1px solid rgba(254,210,34,.45);background:rgba(27,11,3,.55)}
+.gala__bank[hidden]{display:none}
+.gala__bank-title{margin-bottom:10px;font-family:var(--display);font-weight:700;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold)}
+.gala__bank dl{display:grid;gap:8px}
+.gala__bank dl>div{display:grid;grid-template-columns:110px 1fr;gap:10px;align-items:baseline}
+.gala__bank dt{font-family:var(--body);font-size:13px;color:rgba(255,248,235,.7)}
+.gala__bank dd{font-family:var(--body);font-size:14.5px;line-height:1.5;color:var(--ivory);overflow-wrap:anywhere}
+.gala__bank dd b{font-weight:700;color:var(--amber)}
+.copybtn{margin-left:8px;padding:3px 10px;border:1px solid rgba(255,248,235,.5);border-radius:3px;background:transparent;color:var(--ivory);font:600 12px var(--body);cursor:pointer;white-space:nowrap}
+.copybtn:hover{background:rgba(255,248,235,.15)}
+@media (max-width:560px){.gala__bank dl>div{grid-template-columns:1fr;gap:2px}}
+
+.who{border:0;padding:0;margin:0;display:flex;flex-wrap:wrap;gap:10px}
+.who .field__label{width:100%;margin-bottom:8px}
+.who__opt{flex:1 1 220px;display:flex;align-items:center;gap:10px;padding:12px 16px;border-radius:4px;border:1px solid rgba(255,248,235,.3);background:rgba(27,11,3,.4);cursor:pointer;font-family:var(--display);font-weight:700;font-size:15px;color:var(--ivory);transition:border-color .2s,background .2s}
+.who__opt:hover,.who__opt:focus-within{border-color:var(--gold)}
+.who__opt:has(input:checked){border-color:var(--gold);background:rgba(254,210,34,.12)}
+.who__opt input{flex:none;width:18px;height:18px;accent-color:var(--amber)}
+.gala.is-locked{opacity:.5;cursor:not-allowed}.gala.is-locked:hover{border-color:rgba(255,248,235,.3)}.gala.is-locked input{cursor:not-allowed}

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Gói &amp; quyền lợi nhà tài trợ · 2027 JCI Khanhhoa Inauguration Ceremony</title>
+<meta name="description" content="Bốn gói đồng hành và quyền lợi nhà tài trợ của 2027 JCI Khanhhoa Inauguration Ceremony (26/12/2026, Nha Trang). Lead Together.">
+<meta name="theme-color" content="#1B0B03">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png">
+<link rel="icon" type="image/png" sizes="192x192" href="/assets/favicon-192.png">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<link rel="stylesheet" href="/css/site.css">
+<link rel="stylesheet" href="/css/ntt.css?v=6">
+</head>
+<body class="page-ntt">
+<div id="site-nav"></div>
+
+<main>
+  <!-- ===== Đầu trang ===== -->
+  <section class="nt nt--hero" style="--sec-img:url('/assets/bg/bg-5.webp')">
+    <div class="nt__bg" aria-hidden="true"></div>
+    <div class="nt__in">
+      <p class="nt__label">Đồng hành cùng cộng đồng doanh nhân &amp; lãnh đạo trẻ Khánh Hòa</p>
+      <h1 class="nt__title">Gói &amp; quyền lợi nhà tài trợ</h1>
+      <p class="nt__event">2027 JCI Khanhhoa Inauguration Ceremony</p>
+      <p class="nt__when"><span>13h00, ngày 26/12/2026</span><i aria-hidden="true">|</i><span>Sảnh Loyar, TTC&nbsp;Hotel&nbsp;Nha&nbsp;Trang</span></p>
+      <div class="nt__cta">
+        <a class="btn btn--lg" href="https://drive.google.com/file/d/1NPNrKGf2nriI0yrSzMUI4PqXYNmiJ36D/view?usp=sharing" target="_blank" rel="noopener">Hồ sơ mời tài trợ</a>
+        <a class="btn btn--ghost btn--lg" href="#dang-ky-tai-tro">Liên hệ đăng ký</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 4 gói ===== -->
+  <section class="nt" id="goi" style="--sec-img:url('/assets/bg/bg-6.webp')">
+    <div class="nt__bg" aria-hidden="true"></div>
+    <div class="nt__in">
+      <h2 class="nt__h2">Gói tài trợ</h2>
+      <div class="goi" id="goiList" aria-live="polite"></div>
+    </div>
+  </section>
+
+  <!-- ===== Bảng quyền lợi ===== -->
+  <section class="nt" id="quyen-loi" style="--sec-img:url('/assets/bg/bg-7.webp')">
+    <div class="nt__bg" aria-hidden="true"></div>
+    <div class="nt__in">
+      <h2 class="nt__h2">Quyền lợi theo từng gói</h2>
+      <div class="tabs" id="goiTabs" role="tablist" aria-label="Chọn gói để xem quyền lợi"></div>
+      <div id="qlList"></div>
+      <p class="nt__note" id="qlNote"></p>
+    </div>
+  </section>
+
+  <!-- ===== Tài trợ hiện vật ===== -->
+  <section class="nt" id="hien-vat" style="--sec-img:url('/assets/bg/bg-3.webp')">
+    <div class="nt__bg" aria-hidden="true"></div>
+    <div class="nt__in">
+      <h2 class="nt__h2">Tài trợ hiện vật</h2>
+      <p class="nt__sub">Doanh nghiệp có thể quy đổi một phần giá trị gói bằng hiện vật cần thiết cho&nbsp;sự&nbsp;kiện.</p>
+      <div class="hv">
+        <div class="hv__side">
+          <div class="card card--w"><div class="hv__pct" id="hvPct"></div><p id="hvMota"></p></div>
+          <div class="card card--w"><ul class="dot" id="hvLuuy"></ul></div>
+        </div>
+        <div class="card hv__list" id="hvList"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Quy trình + thanh toán + liên hệ ===== -->
+  <section class="nt" id="dang-ky-tai-tro" style="--sec-img:url('/assets/bg/bg-2.webp')">
+    <div class="nt__bg" aria-hidden="true"></div>
+    <div class="nt__in">
+      <h2 class="nt__h2">Quy trình đăng ký tài trợ</h2>
+      <div class="qt">
+        <ol class="steps" id="steps"></ol>
+        <div class="qt__side" id="thong-tin-lien-he">
+          <div class="card card--w">
+            <h3 class="card__t">Thông tin thanh toán</h3>
+            <ul class="dot">
+              <li>Đơn vị nhận:<br><b>CLB DOANH NHAN TRE THE GIOI TAI VIET NAM</b></li>
+              <li>Số tài khoản: <b class="stk" id="stk">1050120408</b> <button type="button" class="copy" id="stkCopy" aria-label="Sao chép số tài khoản">Sao chép</button><br>Ngân hàng: <b>Vietcombank</b></li>
+              <li>Nội dung chuyển khoản:<br><b><i>JCI Khanhhoa - [Tên NTT] - NTT IC</i></b></li>
+            </ul>
+          </div>
+          <div class="card card--w">
+            <h3 class="card__t">Liên hệ đăng ký tài trợ</h3>
+            <ul class="dot">
+              <li>Người phụ trách: <b>VED Bảo Lê</b></li>
+              <li>Zalo / SĐT: <a href="tel:0935751276"><b>0935 751 276</b></a></li>
+            </ul>
+          </div>
+          <div class="card card--w">
+            <h3 class="card__t">Hỗ trợ về sự kiện</h3>
+            <ul class="dot">
+              <li>Liên hệ: <b>ED Trần An Bình</b></li>
+              <li>SĐT: <a href="tel:0792200375"><b>079 22 00 375</b></a></li>
+              <li>Email: <a href="mailto:binnovasolutions.vn@gmail.com"><b>binnovasolutions.vn@gmail.com</b></a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Gian hàng ===== -->
+  <section class="nt nt--soon" id="gian-hang" style="--sec-img:url('/assets/bg/bg-1.webp')">
+    <div class="nt__bg" aria-hidden="true"></div>
+    <div class="nt__in">
+      <h2 class="nt__h2">Đăng ký gian hàng tại sự kiện</h2>
+      <p class="soon"><b>Sắp mở đăng ký.</b> Ban tổ chức sẽ thông báo ngay khi cổng đăng ký gian hàng được&nbsp;mở.</p>
+    </div>
+  </section>
+</main>
+
+<div id="site-foot"></div>
+<script src="/js/layout.js?v=5"></script>
+<script src="/js/goi-ntt.js?v=4"></script>
+</body>
+</html>
