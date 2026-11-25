@@ -11,9 +11,9 @@
   // cụm logo đơn vị (thứ tự: YBA HCM → JCI Vietnam → JCI Khanhhoa), nằm đầu thanh menu bên trái
   var PARTNERS =
     '<a class="nav__partners" href="' + (home ? '#top' : '/') + '" aria-label="Về đầu trang chủ">' +
-      '<img src="/assets/doi-tac/yba-hcm.png" alt="Hội Doanh nhân trẻ TP. Hồ Chí Minh (YBA HCM)" height="40">' +
-      '<img src="/assets/doi-tac/jci-vietnam.png" alt="JCI Vietnam" height="40">' +
-      '<img src="/assets/doi-tac/jci-khanhhoa.png" alt="JCI Khanhhoa" height="40">' +
+      '<img src="/assets/doi-tac/yba-hcm.png" alt="Hội Doanh nhân trẻ TP. Hồ Chí Minh (YBA HCM)" width="144" height="140">' +
+      '<img src="/assets/doi-tac/jci-vietnam.png" alt="JCI Vietnam" width="291" height="140">' +
+      '<img src="/assets/doi-tac/jci-khanhhoa.png" alt="JCI Khanhhoa" width="292" height="140">' +
     '</a>';
 
   var NAV =
@@ -23,7 +23,7 @@
         '<button type="button" class="nav__burger" id="navBurger" aria-label="Mở menu" aria-expanded="false" aria-controls="navDrawer"><i></i><i></i><i></i></button>' +
         PARTNERS +
         '<a class="nav__link" href="' + a('#ve-jci') + '">JCI Khanhhoa</a>' +
-        '<a class="nav__link" href="' + a('#ban-dieu-hanh-2027') + '">Ban điều hành</a>' +
+        '<a class="nav__link" href="' + a('#ban-dieu-hanh-2027') + '">Ban điều hành 2027</a>' +
         '<a class="nav__link" href="' + a('#noi-dung-chuong-trinh') + '">Agenda</a>' +
       '</div>' +
       '<a class="nav__logo" href="' + (home ? '#top' : '/') + '" aria-label="Lead Together: về trang chủ">' +
@@ -140,6 +140,13 @@
     });
     addEventListener('keydown', function (e) { if (e.key === 'Escape' && !drawer.hidden) setOpen(false); });
     addEventListener('resize', function () { if (innerWidth > 1140 && !drawer.hidden) setOpen(false); });
+  }
+
+  // chỉ hiện thanh menu sau khi phông chữ tải xong (hoặc tối đa 1,2 giây) để chữ không đổi độ rộng làm menu giật lúc mở trang
+  if (nav) {
+    var ready = function () { nav.classList.add('is-ready'); };
+    var fonts = document.fonts && document.fonts.ready;
+    if (fonts) { Promise.race([fonts, new Promise(function (r) { setTimeout(r, 1200); })]).then(ready, ready); } else ready();
   }
 
   // thanh menu đặc dần khi cuộn khỏi đầu trang
