@@ -8,20 +8,28 @@
   var a = function (hash) { return (home ? '' : '/') + hash; };
   var here = function (prefix) { return path.indexOf(prefix) === 0 ? ' aria-current="page"' : ''; };
 
+  // cụm logo đơn vị (thứ tự: YBA HCM → JCI Vietnam → JCI Khanhhoa), nằm đầu thanh menu bên trái
+  var PARTNERS =
+    '<div class="nav__partners" aria-label="Đơn vị chỉ đạo và tổ chức">' +
+      '<img src="/assets/doi-tac/yba-hcm.png" alt="Hội Doanh nhân trẻ TP. Hồ Chí Minh (YBA HCM)" height="40">' +
+      '<img src="/assets/doi-tac/jci-vietnam.png" alt="JCI Vietnam" height="40">' +
+      '<img src="/assets/doi-tac/jci-khanhhoa.png" alt="JCI Khanhhoa" height="40">' +
+    '</div>';
+
   var NAV =
     '<header class="nav" id="nav">' +
     '<nav class="nav__bar" aria-label="Điều hướng chính">' +
       '<div class="nav__side nav__side--l">' +
         '<button type="button" class="nav__burger" id="navBurger" aria-label="Mở menu" aria-expanded="false" aria-controls="navDrawer"><i></i><i></i><i></i></button>' +
+        PARTNERS +
         '<a class="nav__link" href="' + a('#ve-jci') + '">Về JCI Khanhhoa</a>' +
-        '<a class="nav__link" href="' + a('#noi-dung-chuong-trinh') + '">Agenda</a>' +
         '<a class="nav__link" href="' + a('#ban-dieu-hanh-2027') + '">Ban điều hành 2027</a>' +
-        '<a class="nav__link" href="' + a('#cau-chuyen') + '">Lead Together</a>' +
       '</div>' +
       '<a class="nav__logo" href="' + (home ? '#top' : '/') + '" aria-label="Lead Together: về trang chủ">' +
         '<img src="/assets/logo-lead-together-nobg.webp" alt="Logo nhiệm kỳ 2027 JCI Khanhhoa, Lead Together" width="720" height="630"></a>' +
       '<div class="nav__side nav__side--r">' +
-        '<a class="nav__link" href="' + a('#chuong-trinh') + '">Chương trình</a>' +
+        '<a class="nav__link" href="' + a('#cau-chuyen') + '">Lead Together</a>' +
+        '<a class="nav__link" href="' + a('#noi-dung-chuong-trinh') + '">Agenda</a>' +
         '<a class="nav__link" href="' + a('#nha-tai-tro') + '">Nhà tài trợ</a>' +
         /* TẠM ẨN: mục Gian hàng, chờ hoàn tất tích hợp. Mở lại bằng cách bỏ chú thích 2 dòng "Gian hàng" (nav + drawer)
         // '<a class="nav__link" href="/gian-hang/" target="_blank" rel="noopener"' + here('/gian-hang') + '>Gian hàng</a>' +
@@ -135,7 +143,9 @@
 
   // thanh menu đặc dần khi cuộn khỏi đầu trang
   if (nav) {
-    var onScroll = function () { nav.classList.toggle('is-solid', window.scrollY > 40); };
+    var onScroll = function () {
+      nav.classList.toggle('is-solid', window.scrollY > 40);
+    };
     onScroll();
     addEventListener('scroll', onScroll, { passive: true });
   }

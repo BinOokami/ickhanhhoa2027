@@ -30,11 +30,15 @@ a{color:inherit;text-decoration:none}
      background:rgba(27,11,3,.55);
      -webkit-backdrop-filter:blur(14px) saturate(140%);backdrop-filter:blur(14px) saturate(140%);transition:background .3s}
 .nav.is-solid .nav__side{background:rgba(27,11,3,.86)}
-.nav__side--l{padding:0 calc(var(--cut) + 12px) 0 clamp(24px,3vw,44px);border-radius:4px 0 0 4px;
+.nav__side--l{gap:clamp(14px,2.6vw,44px);padding:0 calc(var(--cut) + 12px) 0 8px;border-radius:4px 0 0 4px;
      clip-path:polygon(0 0,100% 0,calc(100% - var(--cut)) 100%,0 100%)}
 .nav__side--r{justify-content:flex-end;padding:0 8px 0 calc(var(--cut) + clamp(18px,2.4vw,34px));border-radius:0 4px 4px 0;
      clip-path:polygon(var(--cut) 0,100% 0,100% 100%,0 100%)}
 .nav .btn{height:48px;padding:0 28px}   /* 64px - 2×8px đệm = 48px; góc vuông nhẹ (2px) giống 2 nút trong hero */
+.nav__partners{display:flex;align-items:center;gap:clamp(12px,1.2vw,20px);flex:none;height:48px;padding:0 clamp(16px,1.4vw,24px);border-radius:2px;margin-right:clamp(8px,1.1vw,16px);
+     background:linear-gradient(100deg,var(--orange),var(--amber) 60%,var(--gold))}   /* cùng nền, cùng cao 48px và cùng cách mép 8px với nút Tham dự */
+.nav__partners img{height:28px;width:auto;display:block;filter:drop-shadow(0 1px 1px rgba(110,38,0,.75)) drop-shadow(0 2px 4px rgba(110,38,0,.55))}
+@media (max-width:1080px){.nav__partners{display:none}}
 .nav__logo{position:relative;display:block;width:clamp(78px,6.6vw,96px);margin:-14px clamp(2px,.6vw,10px);
      filter:drop-shadow(0 0 16px rgba(254,160,2,.4)) drop-shadow(0 6px 12px rgba(0,0,0,.4));transition:transform .3s}
 .nav__logo:hover,.nav__logo:focus-visible{transform:scale(1.05)}
