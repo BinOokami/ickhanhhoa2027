@@ -139,11 +139,14 @@
   document.addEventListener('keydown',e=>{if(sending&&e.key==='Escape'){e.preventDefault();e.stopPropagation()}},true);
   ov.addEventListener('click',e=>{if(sending)e.stopPropagation()});
 
+  // báo thiếu ảnh ngay khi bấm Gửi, kể cả lúc còn ô khác chưa hợp lệ (kiểm tra gốc của trình duyệt chặn trước và chỉ báo ô đầu tiên)
+  btn.addEventListener('click',()=>{ if(!croppedBlob) setErr('Vui lòng chọn ảnh chân dung (bắt buộc).') });
+
   form.addEventListener('submit',async e=>{
     e.preventDefault();
     if(sending) return;                       // bấm đúp: bỏ qua
     if(form.website&&form.website.value){return}   // ô bẫy bot có dữ liệu: bỏ qua, không gửi
-    if(!croppedBlob){setErr('Vui lòng chọn và chỉnh ảnh chân dung để làm thiệp mời.');avBox.scrollIntoView({block:'center',behavior:'smooth'});return}
+    if(!croppedBlob){setErr('Vui lòng chọn ảnh chân dung (bắt buộc).');avBox.scrollIntoView({block:'center',behavior:'smooth'});return}
     try{ API.ready('dangKyKhach') }          // chế độ thật mà chưa có nơi nhận: báo ngay, chưa tải ảnh lên
     catch(err){ show('Biểu mẫu chưa được kết nối nơi nhận đăng ký. Chưa có thông tin nào được gửi đi.',{closable:true}); return }
     sending=true;btn.disabled=true;           // khóa ngay, trước khi gọi mạng
