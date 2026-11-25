@@ -121,7 +121,7 @@
       croppedBlob=b;
       if(thumbUrl)URL.revokeObjectURL(thumbUrl);
       thumbUrl=URL.createObjectURL(b);thumb.style.backgroundImage='url("'+thumbUrl+'")';thumb.classList.add('has-img');
-      nameEl.textContent='Đã chỉnh ảnh (vuông 512×512)';hint.textContent='Bấm vào đây để chọn ảnh khác.';hint.classList.remove('upload__err');avBox.classList.remove('is-err');
+      nameEl.textContent='Đã chỉnh ảnh';hint.textContent='Bấm vào đây để chọn ảnh khác.';hint.classList.remove('upload__err');avBox.classList.remove('is-err');
       closeCrop();
     };
     // ưu tiên WebP (nhẹ), trình duyệt không xuất được WebP thì dùng JPEG
@@ -151,7 +151,7 @@
     const withTimeout=(p,ms)=>Promise.race([p,new Promise((_,no)=>setTimeout(()=>no(Object.assign(new Error('timeout'),{name:'AbortError'})),ms))]);
     try{
       const fd=new FormData(form),t=k=>String(fd.get(k)||'').trim();
-      const payload={fullName:t('fullName'),salutation:t('salutation'),phone:t('phone'),email:t('email'),
+      const payload={fullName:t('fullName'),salutation:(t('salutation')==='khac'?'':t('salutation')),phone:t('phone'),email:t('email'),
         role:t('role'),organizationTitle:t('organizationTitle'),
         memberType:who(),attendGala:document.getElementById('f-gala').checked,galaFee:document.getElementById('f-gala').checked?FEE[who()]:0,consent:true,idempotencyKey:key};
       const r=await withTimeout((async()=>{
