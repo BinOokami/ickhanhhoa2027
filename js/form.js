@@ -162,7 +162,7 @@
       })(),30000);
       sending=false;                          // thành công: nút Gửi vẫn khóa để không gửi lại
       // không hiện mã/QR ở đây: thiệp mời kèm mã check-in sẽ gửi qua email
-      show(r&&r.local?'Đã ghi nhận thử (chế độ thử). Thông tin CHƯA được lưu lên máy chủ.':'Đã đăng ký thành công. Thiệp mời sẽ sớm được gửi qua mail của Ông/Bà.',{closable:true});
+      show(r&&r.local?'Đã ghi nhận thử (chế độ thử). Thông tin CHƯA được lưu lên máy chủ.':'Đã đăng ký thành công. Thiệp mời sẽ sớm được gửi qua mail của '+((payload.salutation?payload.salutation+' ':'')+payload.fullName)+'.',{closable:true});
     }catch(err){
       sending=false;
       show(err.name==='AbortError'?'Mạng chậm. Vui lòng kiểm tra email/Zalo trước khi đăng ký lại.':(err.message||'Có lỗi xảy ra, vui lòng thử lại.'),
