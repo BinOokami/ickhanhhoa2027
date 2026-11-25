@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tạo ảnh đại diện có khung · 2027 JCI Khanhhoa Inauguration Ceremony</title>
+<meta name="description" content="Ghép ảnh của bạn vào khung ảnh đại diện 2027 JCI Khanhhoa Inauguration Ceremony. Ảnh xử lý ngay trên thiết bị của bạn. Lead Together.">
+<meta name="theme-color" content="#1B0B03">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png">
+<link rel="icon" type="image/png" sizes="192x192" href="/assets/favicon-192.png">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<link rel="stylesheet" href="/css/site.css">
+<link rel="stylesheet" href="/css/ntt.css?v=6">
+<link rel="stylesheet" href="/css/khung.css?v=2">
+</head>
+<body class="page-ntt page-khung">
+<div id="site-nav"></div>
+
+<main>
+  <section class="nt nt--hero" style="--sec-img:url('/assets/bg/bg-5.webp')">
+    <div class="nt__bg" aria-hidden="true"></div>
+    <div class="nt__in" style="width:min(940px,100% - 32px)">
+      <p class="nt__label">Cùng đồng hành &amp; lan tỏa</p>
+      <h1 class="nt__title">Tạo ảnh đại diện có khung</h1>
+      <p class="nt__event">2027 JCI Khanhhoa Inauguration Ceremony</p>
+
+      <div class="kh" id="kh">
+        <div class="kh__stage" id="stage">
+          <canvas id="cv" aria-label="Xem trước ảnh đại diện"></canvas>
+          <div class="kh__empty">
+            <p>Chọn một ảnh chân dung để ghép vào khung.</p>
+            <button type="button" class="btn btn--lg" id="pick">Chọn ảnh</button>
+          </div>
+        </div>
+
+        <div class="kh__panel">
+          <div>
+            <p class="kh__lbl">Thu phóng</p>
+            <div class="kh__row" style="margin-top:8px">
+              <button type="button" class="kh__ico" id="zout" data-need-img aria-label="Thu nhỏ"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/></svg></button>
+              <input type="range" id="zoom" data-need-img min="0.2" max="4" step="0.01" value="1" aria-label="Thu phóng">
+              <button type="button" class="kh__ico" id="zin" data-need-img aria-label="Phóng to"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></button>
+            </div>
+          </div>
+          <div>
+            <p class="kh__lbl">Xoay &amp; lật</p>
+            <div class="kh__tools" style="margin-top:8px">
+              <button type="button" class="kh__ico kh__ico--t" id="rl" data-need-img aria-label="Xoay trái"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 4v6h6"/><path d="M3.5 10a9 9 0 1 1 2 6.5"/></svg><span>Xoay trái</span></button>
+              <button type="button" class="kh__ico kh__ico--t" id="rr" data-need-img aria-label="Xoay phải"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 4v6h-6"/><path d="M20.5 10a9 9 0 1 0-2 6.5"/></svg><span>Xoay phải</span></button>
+              <button type="button" class="kh__ico kh__ico--t" id="fl" data-need-img aria-label="Lật ngang"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v18"/><path d="M8 7 3 17h5z"/><path d="M16 7l5 10h-5z"/></svg><span>Lật</span></button>
+              <button type="button" class="kh__ico kh__ico--t" id="rs" data-need-img aria-label="Đặt lại"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12a8 8 0 1 0 3-6.2"/><path d="M4 4v5h5"/></svg><span>Đặt lại</span></button>
+            </div>
+          </div>
+          <button type="button" class="btn btn--ghost" id="pick2">Đổi ảnh khác</button>
+          <button type="button" class="btn btn--lg kh__dl" id="dl" data-need-img>Tải ảnh về</button>
+          <p class="kh__ok" id="ok">Đã tạo ảnh. Nếu máy không tự lưu, bạn nhấn giữ vào ảnh để lưu nhé.</p>
+          <details class="kh__how">
+            <summary>Hướng dẫn</summary>
+            <p>Kéo ảnh để căn vị trí. Dùng ngón tay chụm vào hoặc mở ra để thu nhỏ, phóng to (trên máy tính: cuộn chuột). Sau khi chỉnh xong, bấm "Tải ảnh về", ảnh sẽ được lưu tại thư mục tải xuống mặc định của thiết bị.</p>
+          </details>
+          <p class="kh__hint"><b>Lưu ý:</b> Ảnh được xử lý ngay trên thiết bị và không lưu hay gửi về máy chủ.</p>
+        </div>
+      </div>
+      <input type="file" id="file" accept="image/*" hidden>
+    </div>
+  </section>
+</main>
+
+<div id="site-foot"></div>
+<script src="/js/layout.js?v=5"></script>
+<script src="/js/khung.js?v=1"></script>
+</body>
+</html>
