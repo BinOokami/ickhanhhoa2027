@@ -26,7 +26,7 @@
 <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
 <link rel="stylesheet" href="/css/site.css">
 <link rel="stylesheet" href="/css/landing.css">
-<link rel="stylesheet" href="/css/form.css">
+<link rel="stylesheet" href="/css/form.css?v=2">
 </head>
 <body>
 
@@ -375,7 +375,7 @@
               <span class="upload__thumb" id="avatarThumb" aria-hidden="true"></span>
               <span>
                 <span class="upload__name" id="avatarName">Chọn ảnh chân dung</span>
-                <span class="field__hint" id="avatarHint">Ảnh này dùng để làm thiệp mời của bạn, nên chọn ảnh rõ mặt. JPG, PNG hoặc WebP, tối đa 5MB. Chọn xong có thể kéo và phóng to để cắt.</span>
+                <span class="field__hint" id="avatarHint">Ảnh này dùng để làm thiệp mời của bạn, nên chọn ảnh rõ mặt. JPG, PNG hoặc WebP, từ 500×500 trở lên, tối đa 5MB. Chọn xong có thể kéo và phóng to để cắt.</span>
               </span>
               <input id="f-avatar" type="file" accept="image/jpeg,image/png,image/webp" aria-labelledby="lbl-avatar">
             </label>
@@ -449,6 +449,7 @@
         <canvas id="cropCanvas" width="640" height="640"></canvas>
       </div>
       <div class="crop__zoom"><span aria-hidden="true">−</span><input id="cropZoom" type="range" min="1" max="4" step="0.01" value="1" aria-label="Phóng to, thu nhỏ"><span aria-hidden="true">+</span></div>
+      <p class="crop__warn" id="cropWarn" role="alert" hidden>Zoom quá gần, hãy thu nhỏ lại.</p>
       <div class="crop__actions">
         <button class="btn btn--ghost" id="cropCancel" type="button">Hủy</button>
         <button class="btn" id="cropOk" type="button">Dùng ảnh này</button>
@@ -480,6 +481,6 @@
 <script src="/js/ntt.js"></script>
 <script src="/js/config.js"></script>
 <script src="/js/api.js"></script>
-<script src="/js/form.js?v=2"></script>
+<script src="/js/form.js?v=3"></script>
 </body>
 </html>

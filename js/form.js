@@ -56,19 +56,22 @@
   terms.addEventListener('click',e=>{if(e.target===terms)closeTerms()});
   terms.addEventListener('keydown',e=>{if(e.key==='Escape'){e.preventDefault();closeTerms()}});
 
-  // ===== Ảnh chân dung: chọn -> khung kéo/zoom -> cắt vuông 512x512 =====
+  // ===== Ảnh chân dung: chọn -> khung kéo/zoom -> cắt vuông, vùng cắt phải từ 500×500 px, lớn hơn 900 thì thu về 900 =====
   const av=document.getElementById('f-avatar'),avBox=document.getElementById('avatarBox'),thumb=document.getElementById('avatarThumb'),
         nameEl=document.getElementById('avatarName'),hint=document.getElementById('avatarHint');
   const HINT0=hint.textContent;
   const cropEl=document.getElementById('crop'),stage=document.getElementById('cropStage'),cv=document.getElementById('cropCanvas'),
         zoomEl=document.getElementById('cropZoom'),cx2d=cv.getContext('2d');
-  const N=cv.width,OUT=512,R=N/2-14;
+  const N=cv.width,OUT_MIN=500,OUT_MAX=900,R=N/2-14;
+  const okBtn=document.getElementById('cropOk'),warnEl=document.getElementById('cropWarn');
+  const cropSide=()=>Math.round(N/(c.base*c.zoom));   // số điểm ảnh gốc nằm trong khung cắt
   let croppedBlob=null,thumbUrl=null,uploaded=null;
   const c={img:null,iw:0,ih:0,base:1,zoom:1,x:0,y:0};   // x,y: điểm của ảnh (toạ độ ảnh) đang nằm giữa khung
 
   const setErr=m=>{hint.textContent=m||HINT0;hint.classList.toggle('upload__err',!!m);avBox.classList.toggle('is-err',!!m)};
   const clamp=()=>{const s=c.base*c.zoom,hw=N/2/s;c.x=Math.min(Math.max(c.x,hw),c.iw-hw);c.y=Math.min(Math.max(c.y,hw),c.ih-hw)};
   const draw=()=>{
+    const small=cropSide()<OUT_MIN;warnEl.hidden=!small;okBtn.disabled=small;   // zoom quá gần: báo và khóa nút
     const s=c.base*c.zoom;
     cx2d.fillStyle='#000';cx2d.fillRect(0,0,N,N);
     cx2d.drawImage(c.img,N/2-c.x*s,N/2-c.y*s,c.iw*s,c.ih*s);
@@ -87,6 +90,7 @@
       let img;
       try{img=await createImageBitmap(f,{imageOrientation:'from-image'})}   // tự xoay đúng chiều theo EXIF
       catch(_){img=await new Promise((ok,no)=>{const i=new Image(),u=URL.createObjectURL(f);i.onload=()=>{URL.revokeObjectURL(u);ok(i)};i.onerror=no;i.src=u})}
+      if(Math.min(img.width,img.height)<OUT_MIN){if(img.close)img.close();av.value='';setErr('Ảnh quá nhỏ, cần từ 500×500 trở lên.');return}
       c.img=img;c.iw=img.width;c.ih=img.height;c.base=Math.max(N/c.iw,N/c.ih);c.zoom=1;c.x=c.iw/2;c.y=c.ih/2;
       zoomEl.value=1;setErr('');clamp();draw();openCrop();
     }catch(_){av.value='';setErr('Không đọc được ảnh này, vui lòng chọn ảnh khác.')}
@@ -113,6 +117,8 @@
   document.getElementById('cropCancel').addEventListener('click',closeCrop);
   cropEl.addEventListener('keydown',e=>{if(e.key==='Escape'){e.preventDefault();closeCrop()}});
   document.getElementById('cropOk').addEventListener('click',()=>{
+    if(cropSide()<OUT_MIN) return;
+    const OUT=Math.min(OUT_MAX,cropSide());   // giữ đúng số điểm ảnh gốc, không phóng to
     const o=document.createElement('canvas');o.width=o.height=OUT;const ox=o.getContext('2d'),s=c.base*c.zoom*OUT/N;
     ox.fillStyle='#fff';ox.fillRect(0,0,OUT,OUT);
     ox.drawImage(c.img,OUT/2-c.x*s,OUT/2-c.y*s,c.iw*s,c.ih*s);
