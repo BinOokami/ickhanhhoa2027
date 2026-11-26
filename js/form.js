@@ -30,6 +30,17 @@
   form.addEventListener('input',clearErr);
   form.addEventListener('change',clearErr);
 
+  // số điện thoại gõ/tự điền kiểu "0901 234 567", "0901.234.567", "+84 901..." hay "84901..." => tự đưa về 0901234567 TRƯỚC khi kiểm tra.
+  // Chỉ bỏ dấu ngăn cách và ký tự ẩn (hay dính khi chép từ danh bạ); chữ cái giữ nguyên để vẫn báo không hợp lệ.
+  const fPhone=document.getElementById('f-sdt');
+  const cleanPhone=()=>{
+    const v=fPhone.value.replace(/[\s.\-()\u200b-\u200f\u202a-\u202e\u2066-\u2069]/g,'').replace(/^(\+84|84(?=\d{9}$))/,'0');
+    if(v!==fPhone.value) fPhone.value=v;
+  };
+  fPhone.addEventListener('change',cleanPhone);
+  fPhone.addEventListener('keydown',e=>{if(e.key==='Enter')cleanPhone()});
+  form.querySelector('button[type="submit"]').addEventListener('click',cleanPhone);
+
   // ===== Thông tin chuyển khoản Gala: hiện khi tick, nội dung chuyển khoản ghép theo tên người tham dự =====
   const gala=document.getElementById('f-gala'),bank=document.getElementById('galaBank'),memo=document.getElementById('bankMemo'),fName=document.getElementById('f-ten');
   const noAccent=t=>t.normalize('NFD').replace(/[̀-ͯ]/g,'').replace(/đ/g,'d').replace(/Đ/g,'D').replace(/\s+/g,' ').trim();

@@ -342,7 +342,7 @@
         <div class="reg__grid">
           <div class="field">
             <label class="field__label" for="f-ten">Họ và tên <b>*</b></label>
-            <input id="f-ten" name="fullName" type="text" required maxlength="60" autocomplete="name" placeholder="Nguyễn Văn A" data-required="Vui lòng nhập họ và tên.">
+            <input id="f-ten" name="fullName" type="text" required maxlength="60" pattern="\s*\S[\s\S]*\S\s*" autocomplete="name" placeholder="Nguyễn Văn A" data-required="Vui lòng nhập họ và tên." data-invalid="Họ và tên không hợp lệ.">
           </div>
           <div class="field">
             <label class="field__label" for="f-xh">Xưng hô <b>*</b></label>
@@ -481,6 +481,6 @@
 <script src="/js/ntt.js"></script>
 <script src="/js/config.js"></script>
 <script src="/js/api.js?v=2"></script>
-<script src="/js/form.js?v=5"></script>
+<script src="/js/form.js?v=6"></script>
 </body>
 </html>
