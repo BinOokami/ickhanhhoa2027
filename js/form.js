@@ -13,19 +13,22 @@
   // mã chống trùng: sinh 1 lần khi tải trang, gửi kèm; server dùng làm khóa idempotency (server vẫn phải tự chặn trùng theo SĐT/email)
   const key=(window.crypto&&crypto.randomUUID)?crypto.randomUUID():(Date.now().toString(36)+Math.random().toString(36).slice(2));
 
-  // thông báo lỗi tiếng Việt cho kiểm tra bắt buộc/định dạng
-  form.querySelectorAll('input[required],select[required]').forEach(el=>{
-    el.addEventListener('invalid',()=>{
-      el.setCustomValidity('');
-      let m='';
-      if(el.validity.valueMissing) m=el.dataset.required||'Vui lòng nhập thông tin này.';
-      else if(el.validity.patternMismatch||el.validity.typeMismatch) m=el.dataset.invalid||'Thông tin chưa đúng định dạng.';
-      if(m) el.setCustomValidity(m);
-      form.classList.add('was-validated');
-    });
-    el.addEventListener('input',()=>el.setCustomValidity(''));
-    el.addEventListener('change',()=>el.setCustomValidity(''));
-  });
+  // thông báo lỗi hiện ngay dưới ô sai (không dùng bong bóng gốc của trình duyệt: hay bị tắt mất khi trang cuộn mượt)
+  let firstBad=null;
+  form.addEventListener('invalid',e=>{        // sự kiện invalid không nổi bọt nên phải bắt ở pha capture
+    e.preventDefault();
+    const el=e.target,field=el.closest('.field'); if(!field) return;
+    const src=el.type==='radio'?form.querySelector('input[name="'+el.name+'"][data-required]'):el;
+    let box=field.querySelector('.field__err');
+    if(!box){box=document.createElement('span');box.className='field__err';box.setAttribute('role','alert');field.appendChild(box)}
+    box.textContent=el.validity.valueMissing?(src.dataset.required||'Vui lòng nhập thông tin này.'):(src.dataset.invalid||'Thông tin không hợp lệ.');
+    el.setAttribute('aria-invalid','true');
+    form.classList.add('was-validated');
+    if(!firstBad){firstBad=el;setTimeout(()=>{firstBad.focus({preventScroll:true});firstBad.closest('.field').scrollIntoView({block:'center',behavior:'smooth'});firstBad=null},0)}
+  },true);
+  const clearErr=e=>{const field=e.target.closest('.field'),box=field&&field.querySelector('.field__err');if(box){box.remove();e.target.removeAttribute('aria-invalid')}};
+  form.addEventListener('input',clearErr);
+  form.addEventListener('change',clearErr);
 
   // ===== Thông tin chuyển khoản Gala: hiện khi tick, nội dung chuyển khoản ghép theo tên người tham dự =====
   const gala=document.getElementById('f-gala'),bank=document.getElementById('galaBank'),memo=document.getElementById('bankMemo'),fName=document.getElementById('f-ten');

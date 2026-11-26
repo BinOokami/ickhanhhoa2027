@@ -18,6 +18,7 @@
 .field input:focus,.field select:focus{outline:none;border-color:var(--gold);box-shadow:0 0 0 3px rgba(254,210,34,.35)}
 .was-validated .field :is(input,select):invalid{border-color:#e5533d;box-shadow:0 0 0 3px rgba(229,83,61,.28)}
 .field__hint{font-family:var(--body);font-size:12.5px;line-height:1.5;color:rgba(255,248,235,.65)}
+.field__err{font-family:var(--body);font-size:13px;font-weight:600;line-height:1.4;color:#ffb4a6}
 /* ô tải ảnh chân dung (nền trắng như các ô nhập); bấm vào để chọn, chọn xong mở khung kéo/zoom để cắt */
 .upload{position:relative;display:flex;align-items:center;gap:16px;padding:14px;border-radius:4px;border:1px dashed rgba(255,248,235,.55);background:#fff;color:#1a0f00;cursor:pointer;transition:border-color .2s,box-shadow .2s}
 .upload:hover,.upload:focus-within{border-color:var(--gold);box-shadow:0 0 0 3px rgba(254,210,34,.35)}
