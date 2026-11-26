@@ -151,6 +151,14 @@
   // báo thiếu ảnh ngay khi bấm Gửi, kể cả lúc còn ô khác chưa hợp lệ (kiểm tra gốc của trình duyệt chặn trước và chỉ báo ô đầu tiên)
   btn.addEventListener('click',()=>{ if(!croppedBlob) setErr('Vui lòng chọn ảnh chân dung (bắt buộc).') });
 
+  // số điện thoại của các lần gửi KHÔNG có phản hồi: gửi lại mà báo trùng đúng số đó nghĩa là lần trước đã ghi thành công.
+  // Lưu theo tab (sessionStorage) để bấm F5 vẫn còn. Giá trị: lần gửi đó có thiếu ảnh không.
+  const PEND='ic2027_cho_xac_nhan';
+  let pending={}; try{pending=JSON.parse(sessionStorage.getItem(PEND))||{}}catch(_){}
+  const savePending=()=>{try{sessionStorage.setItem(PEND,JSON.stringify(pending))}catch(_){}};
+  const normPhone=p=>{const d=p.replace(/\D/g,'');return d.length===11&&d.startsWith('84')?'0'+d.slice(2):d};   // chuẩn hóa giống hàm dang_ky_khach
+  const withTimeout=(p,ms)=>Promise.race([p,new Promise((_,no)=>setTimeout(()=>no(Object.assign(new Error('timeout'),{noReply:true})),ms))]);
+
   form.addEventListener('submit',async e=>{
     e.preventDefault();
     if(sending) return;                       // bấm đúp: bỏ qua
@@ -160,24 +168,38 @@
     catch(err){ show('Biểu mẫu chưa được kết nối nơi nhận đăng ký. Chưa có thông tin nào được gửi đi.',{closable:true}); return }
     sending=true;btn.disabled=true;           // khóa ngay, trước khi gọi mạng
     show('Thông tin đang được xử lý, vui lòng không đóng trang.',{loading:true});
-    const withTimeout=(p,ms)=>Promise.race([p,new Promise((_,no)=>setTimeout(()=>no(Object.assign(new Error('timeout'),{name:'AbortError'})),ms))]);
+    let who2='',phone='',noPhoto=false;
     try{
       const fd=new FormData(form),t=k=>String(fd.get(k)||'').trim();
       const payload={fullName:t('fullName'),salutation:(t('salutation')==='khac'?'':t('salutation')),phone:t('phone'),email:t('email'),
         role:t('role'),organizationTitle:t('organizationTitle'),
         memberType:who(),attendGala:document.getElementById('f-gala').checked,galaFee:document.getElementById('f-gala').checked?FEE[who()]:0,consent:true,idempotencyKey:key};
-      const r=await withTimeout((async()=>{
-        // chỉ tải ảnh lên một lần cho mỗi ảnh đã cắt (gửi lại sau lỗi không tải lại)
-        if(!uploaded||uploaded.blob!==croppedBlob) uploaded={blob:croppedBlob,url:await API.uploadImage(croppedBlob,'avatar',payload.fullName)};
-        payload.avatarUrl=uploaded.url;
-        return API.registerGuest(payload);
-      })(),30000);
+      who2=(payload.salutation?payload.salutation+' ':'')+payload.fullName;
+      phone=normPhone(payload.phone);
+      // chỉ tải ảnh lên một lần cho mỗi ảnh đã cắt (gửi lại sau lỗi không tải lại).
+      // Máy chủ ảnh lỗi hoặc quá 20 giây: VẪN đăng ký, để trống ảnh, Ban tổ chức xin ảnh sau.
+      if(!uploaded||uploaded.blob!==croppedBlob){
+        try{ uploaded={blob:croppedBlob,url:await withTimeout(API.uploadImage(croppedBlob,'avatar',payload.fullName),20000)} }
+        catch(_){ noPhoto=true }
+      }
+      payload.avatarUrl=noPhoto?'':uploaded.url;
+      if(noPhoto) payload.avatarError=true;
+      const r=await withTimeout(API.registerGuest(payload),30000);
       sending=false;                          // thành công: nút Gửi vẫn khóa để không gửi lại
+      delete pending[phone];savePending();
       // không hiện mã/QR ở đây: thiệp mời kèm mã check-in sẽ gửi qua email
-      show(r&&r.local?'Đã ghi nhận thử (chế độ thử). Thông tin CHƯA được lưu lên máy chủ.':'Đã đăng ký thành công. Thiệp mời sẽ sớm được gửi qua mail của '+((payload.salutation?payload.salutation+' ':'')+payload.fullName)+'.',{closable:true});
+      show(r&&r.local?'Đã ghi nhận thử (chế độ thử). Thông tin CHƯA được lưu lên máy chủ.'
+          :noPhoto?'Thông tin đã được đăng ký. Tuy nhiên máy chủ đang chưa thể xử lý ảnh, BTC sẽ chủ động liên hệ với '+who2+'.'
+          :'Đã đăng ký thành công. Thiệp mời sẽ sớm được gửi qua mail của '+who2+'.',{closable:true});
     }catch(err){
       sending=false;
-      show(err.name==='AbortError'?'Mạng chậm. Vui lòng kiểm tra email/Zalo trước khi đăng ký lại.':(err.message||'Có lỗi xảy ra, vui lòng thử lại.'),
+      if(err.duplicate&&phone in pending){    // lần trước treo nhưng thật ra đã ghi: coi là thành công, giữ nút Gửi khóa
+        const missing=pending[phone];delete pending[phone];savePending();
+        show('Thông tin của '+who2+' đã được đăng ký thành công trước đó.'+(missing?' BTC sẽ chủ động liên hệ để nhận ảnh.':''),{closable:true});
+        return;
+      }
+      if(err.noReply&&phone){pending[phone]=!!pending[phone]||noPhoto;savePending()}
+      show(err.noReply?'Dường như mạng có vấn đề, bạn thử gửi lại nhé.':(err.message||'Có lỗi xảy ra, vui lòng thử lại.'),
            {closable:true,onClose:()=>{btn.disabled=false}});
     }
   });

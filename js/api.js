@@ -17,6 +17,9 @@
   /* Gọi TRƯỚC khi làm việc tốn kém (vd tải ảnh), để khỏi tải ảnh rồi mới biết chưa có nơi nhận. */
   function ready(key) { if (C.MODE === "live") rpcName(key); }
 
+  /* noReply: không nhận được câu trả lời (mất mạng, cổng quá tải) nên CHƯA BIẾT máy chủ đã ghi hay chưa */
+  var noReply = function () { return Object.assign(new Error(SERVER_ERR), { noReply: true }); };
+
   /* project: mặc định là project hội chợ; đăng ký tham dự truyền project check-in */
   async function rpc(key, body, project) {
     var name = rpcName(key), res, p = project || { url: C.SUPABASE_URL, key: C.SUPABASE_KEY };
@@ -24,7 +27,8 @@
       res = await fetch(p.url + "/rest/v1/rpc/" + name, {
         method: "POST", headers: { "Content-Type": "application/json", apikey: p.key }, body: JSON.stringify(body)
       });
-    } catch (_) { throw new Error(SERVER_ERR); }
+    } catch (_) { throw noReply(); }
+    if (res.status >= 502 && res.status <= 504) throw noReply();
     if (!res.ok) throw new Error(SERVER_ERR);   // mọi lỗi từ máy chủ chỉ báo chung, không nêu chi tiết ra giao diện
     return res.json().catch(function () { return null; });
   }
@@ -65,7 +69,7 @@
   async function registerGuest(payload) {
     if (C.MODE === "local") { await sleep(700); return { ok: true, local: true, code: "IC-JCIKH27-DEMO00", gala: !!payload.attendGala, fee: payload.galaFee || 0 }; }   // chế độ thử: không lưu gì
     var data = await rpc("dangKyKhach", { p: payload }, { url: C.REG_SUPABASE_URL, key: C.REG_SUPABASE_KEY });
-    if (!data) throw new Error(SERVER_ERR);
+    if (!data) throw noReply();
     if (data.ok === false) throw Object.assign(new Error(data.error || SERVER_ERR), { duplicate: !!data.duplicate });
     return { ok: true, code: data.code || "", gala: !!data.gala, fee: data.fee || 0 };
   }
