@@ -43,6 +43,9 @@
     }
     sending=false;
   });
+  // mô tả quá ngắn: thay câu báo mặc định của trình duyệt
+  var mota=document.getElementById('t-mota');
+  mota.addEventListener('input',function(){var n=mota.value.trim().length;mota.setCustomValidity(mota.value&&n<3?'Vui lòng mô tả thêm':'')});
   // trình duyệt chặn gửi vì thiếu/sai ô: tô đỏ các ô lỗi
   form.addEventListener('invalid',function(){form.classList.add('was-validated')},true);
 })();
