@@ -21,6 +21,7 @@ window.APP_CONFIG = {
   TENANT: "ic2027",
   R2_FOLDER: "ic-jcikhanhhoa-2027",              // thư mục trong bucket chuyendoiso-assets/uploads/
   RPC: {
+    dangKyTalent: "dang_ky_talent",               // đăng ký tiết mục (/talent/): hàm ở project check-in
     dangKyKhach: "dang_ky_khach",                 // đăng ký tham dự (form ở trang chủ): hàm ở project check-in
     layGianHang: "lay_gian_hang",                 // /gian-hang/?s=
     guiKhachDeLai: "gui_khach_de_lai",            // khách để lại thông tin cho gian hàng

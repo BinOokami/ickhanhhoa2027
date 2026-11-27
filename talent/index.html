@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Đăng ký tiết mục · JCI Khanhhoa Talent</title>
+<meta name="description" content="Đăng ký tiết mục JCI Khanhhoa Talent trong đêm Gala Dinner, 2027 JCI Khanhhoa Inauguration Ceremony. Lead Together.">
+<meta name="theme-color" content="#1B0B03">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="JCI Khanhhoa">
+<meta property="og:locale" content="vi_VN">
+<meta property="og:url" content="https://jcikhanhhoa.io.vn/talent/">
+<meta property="og:title" content="Đăng ký tiết mục · JCI Khanhhoa Talent">
+<meta property="og:description" content="Sân khấu đêm Gala Dinner dành riêng cho thành viên JCI Khanhhoa. Lead Together.">
+<meta property="og:image" content="https://jcikhanhhoa.io.vn/assets/og-image.jpg?v=2">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png">
+<link rel="icon" type="image/png" sizes="192x192" href="/assets/favicon-192.png">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<link rel="stylesheet" href="/css/site.css">
+<link rel="stylesheet" href="/css/ntt.css?v=6">
+<link rel="stylesheet" href="/css/form.css">
+<link rel="stylesheet" href="/css/talent.css?v=3">
+</head>
+<body class="page-ntt page-talent">
+<div id="site-nav"></div>
+
+<main>
+  <section class="nt nt--hero" style="--sec-img:url('/assets/bg/bg-5.webp')">
+    <div class="nt__bg" aria-hidden="true"></div>
+    <div class="nt__in" style="width:min(940px,100% - 32px)">
+      <p class="nt__label">Đêm Gala Dinner</p>
+      <h1 class="nt__title">JCI Khanhhoa Talent</h1>
+      <p class="tl__tag">Tạm rời bàn họp để "flex" tài năng!</p>
+      <p class="nt__lead tl__lead">Một năm cùng nhau chạy dự án, họp chiến lược và cống hiến hết mình cho cộng đồng. Giờ là lúc các Jaycees khoe những "tài lẻ" chưa từng xuất hiện trên slide hay biên bản họp, ngay trên sân khấu Gala Dinner của 2027 JCI Khanhhoa Inauguration Ceremony.</p>
+
+      <!-- Ảnh minh họa: đặt file vào assets/talent-minh-hoa.webp (chưa có file thì khối này tự ẩn) -->
+      <figure class="tl__art"><img src="/assets/talent-minh-hoa.webp" alt="Minh họa các tiết mục ca hát, nhảy múa, nhạc cụ, xiếc" onerror="this.parentNode.remove()"></figure>
+
+      <ul class="tl__facts">
+        <li><b>Đối tượng</b><span>Toàn thể thành viên chính thức và thành viên tiềm năng JCI Khanhhoa.</span></li>
+        <li><b>Hình thức</b><span>Không giới hạn: cá nhân hoặc nhóm, nội bộ ban hoặc liên minh các ban.</span></li>
+        <li><b>Thể loại</b><span>Không giới hạn: hát, nhảy, nhạc cụ, kịch, ảo thuật, tiết mục sáng tạo...</span></li>
+        <li class="tl__prize"><b>Giải thưởng</b><span>Tổng giá trị <small>dưới</small> <strong>100 triệu</strong><em>dành cho những tiết mục ấn tượng nhất</em></span></li>
+      </ul>
+
+      <form class="reg__form tl__form" id="formTalent" autocomplete="on">
+        <div class="reg__grid">
+          <div class="field field--full">
+            <fieldset class="tl__kind">
+              <legend class="field__label">Hình thức đăng ký <b>*</b></legend>
+              <label><input type="radio" name="kind" value="ca-nhan" required checked><span>Cá nhân</span></label>
+              <label><input type="radio" name="kind" value="nhom"><span>Nhóm</span></label>
+              <span class="tl__group" id="groupField" hidden>
+                <input id="t-nhom" name="groupName" type="text" maxlength="80" aria-label="Tên nhóm" placeholder="Tên nhóm, VD: Ban Truyền thông">
+              </span>
+            </fieldset>
+          </div>
+          <div class="field field--full">
+            <label class="field__label" for="t-ten">Họ và tên người đăng ký (hoặc đại diện nhóm) <b>*</b></label>
+            <input id="t-ten" name="fullName" type="text" required minlength="2" maxlength="60" autocomplete="name" placeholder="Nguyễn Văn A">
+          </div>
+          <div class="field field--full">
+            <label class="field__label" for="t-mota">Mô tả tiết mục <b>*</b></label>
+            <textarea id="t-mota" name="performance" required minlength="3" maxlength="1000" rows="4" placeholder="Tên và nội dung tiết mục"></textarea>
+          </div>
+          <div class="field field--full">
+            <label class="field__label" for="t-hotro">Yêu cầu hỗ trợ từ BTC</label>
+            <textarea id="t-hotro" name="support" maxlength="600" rows="3" placeholder="Âm thanh, đạo cụ, nhạc nền, tập dợt..."></textarea>
+          </div>
+          <div class="hp" aria-hidden="true"><label>Website<input type="text" name="website" tabindex="-1" autocomplete="off"></label></div>
+        </div>
+        <p class="tl__msg" id="talentMsg" role="status" aria-live="polite"></p>
+        <div class="reg__submit"><button class="btn btn--lg" type="submit">Đăng ký tiết mục</button></div>
+      </form>
+    </div>
+  </section>
+</main>
+
+<div id="site-foot"></div>
+<script src="/js/config.js?v=talent1"></script>
+<script src="/js/api.js?v=talent1"></script>
+<script src="/js/layout.js?v=5"></script>
+<script src="/js/talent.js?v=2"></script>
+</body>
+</html>

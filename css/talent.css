@@ -1,0 +1,32 @@
+/* talent.css: trang /talent/ (đăng ký tiết mục). Dùng chung form.css cho ô nhập và nút. */
+.tl__tag{margin-top:14px;font-family:var(--display);font-weight:700;font-size:clamp(16px,2vw,20px);color:var(--gold)}
+.tl__facts{list-style:none;margin:30px 0 0;padding:0;display:grid;gap:10px;text-align:left}
+.tl__facts li{display:grid;grid-template-columns:120px 1fr;gap:14px;padding:13px 16px;border-radius:12px;background:rgba(27,11,3,.5);border:1px solid rgba(255,248,235,.18)}
+.tl__facts b{font-family:var(--display);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);padding-top:3px}
+.tl__facts span{font-family:var(--body);font-size:14.5px;line-height:1.6;color:rgba(255,248,235,.9)}
+.tl__form{margin-top:28px;text-align:left}
+.tl__form textarea{width:100%;padding:12px 14px;border-radius:4px;border:1px solid #fff;background:#fff;color:#1a0f00;font-family:var(--body);font-weight:500;font-size:15px;line-height:1.55;resize:vertical}
+.tl__form textarea:focus{outline:none;border-color:var(--gold);box-shadow:0 0 0 3px rgba(254,210,34,.35)}
+.tl__form.was-validated textarea:invalid{border-color:#e5533d;box-shadow:0 0 0 3px rgba(229,83,61,.28)}
+.tl__form [hidden]{display:none}
+.tl__kind{border:0;margin:0;padding:0;display:flex;gap:12px;flex-wrap:wrap}
+.tl__kind legend{margin-bottom:8px}
+.tl__kind label{display:flex;align-items:center;gap:10px;padding:12px 20px;border-radius:4px;border:1px solid rgba(255,248,235,.3);cursor:pointer;font-family:var(--body);font-size:15px;color:var(--ivory)}
+.tl__kind input{width:18px;height:18px;accent-color:var(--amber)}
+.tl__msg{margin-top:18px;text-align:center;font-family:var(--body);font-size:14.5px;line-height:1.6;color:var(--gold)}
+.tl__msg:empty{display:none}
+.tl__msg.is-err{color:#ffb4a6}
+@media (max-width:560px){.tl__facts li{grid-template-columns:1fr;gap:4px}}
+/* đoạn dẫn trải rộng để gọn khoảng 2-3 dòng */
+.tl__lead{max-width:none}
+.tl__art{width:70%;margin:28px auto 0}
+.tl__art img{display:block;width:100%;height:auto;border-radius:20px;box-shadow:0 24px 60px rgba(0,0,0,.4)}
+/* giải thưởng: làm nổi con số */
+.tl__prize{align-items:center;border-color:rgba(254,210,34,.6)!important;background:linear-gradient(100deg,rgba(254,99,1,.28),rgba(27,11,3,.55))!important}
+.tl__prize span small{font-size:12px;opacity:.75}
+.tl__prize strong{display:inline-block;margin-left:2px;font-family:var(--head);font-weight:700;text-transform:uppercase;font-size:clamp(34px,6vw,52px);line-height:1.1;color:var(--gold);vertical-align:middle}
+.tl__prize em{display:block;font-style:normal;font-size:13.5px;opacity:.85}
+@media (max-width:640px){.tl__art{width:100%}}
+/* ô "Tên nhóm" nằm cùng hàng, bên cạnh nút Nhóm */
+.tl__group{flex:1 1 220px;display:flex;min-width:0}
+.tl__form .tl__group input{width:100%;height:auto;min-height:46px}

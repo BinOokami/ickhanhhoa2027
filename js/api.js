@@ -74,6 +74,14 @@
     return { ok: true, code: data.code || "", gala: !!data.gala, fee: data.fee || 0 };
   }
 
+  /* ---------- đăng ký tiết mục Talent (/talent/): cùng project check-in ---------- */
+  async function registerTalent(payload) {
+    if (C.MODE === "local") { await sleep(500); return; }
+    var data = await rpc("dangKyTalent", { p: payload }, { url: C.REG_SUPABASE_URL, key: C.REG_SUPABASE_KEY });
+    if (!data) throw noReply();
+    if (data.ok === false) throw new Error(data.error || SERVER_ERR);
+  }
+
   /* Slug "mau" luôn là gian hàng MẪU ở mọi chế độ (không gọi máy chủ, không ghi gì), để xem giao diện kể cả khi MODE "live".
      Slug thật luôn có hậu tố ngẫu nhiên (ten-xxxxx) nên không thể trùng "mau". */
   var isSample = function (slug) { return slug === "mau"; };
@@ -113,6 +121,6 @@
     return rpc("doiMaQuanLy", { p_slug: slug, p_token: token });
   }
 
-  window.API = { ready: ready, uploadImage: uploadImage, registerGuest: registerGuest, getBooth: getBooth, sendLead: sendLead,
+  window.API = { ready: ready, uploadImage: uploadImage, registerGuest: registerGuest, registerTalent: registerTalent, getBooth: getBooth, sendLead: sendLead,
                  getOwnerData: getOwnerData, rotateOwnerToken: rotateOwnerToken, slugify: slugify, UUID: UUID };
 })();
