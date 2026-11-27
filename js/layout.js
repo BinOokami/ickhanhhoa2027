@@ -30,7 +30,7 @@
         '<img src="/assets/logo-lead-together-nobg.webp" alt="Logo nhiệm kỳ 2027 JCI Khanhhoa, Lead Together" width="720" height="630"></a>' +
       '<div class="nav__side nav__side--r">' +
         '<a class="nav__link" href="' + a('#cau-chuyen') + '">Lead Together</a>' +
-        '<a class="nav__link" href="' + a('#chuong-trinh') + '">Địa điểm</a>' +
+        '<a class="nav__link" href="/khung-hinh/" target="_blank" rel="noopener"' + here('/khung-hinh') + '>Khung hình</a>' +
         '<a class="nav__link" href="' + a('#nha-tai-tro') + '">Nhà tài trợ</a>' +
         /* TẠM ẨN: mục Gian hàng, chờ hoàn tất tích hợp. Mở lại bằng cách bỏ chú thích 2 dòng "Gian hàng" (nav + drawer)
         // '<a class="nav__link" href="/gian-hang/" target="_blank" rel="noopener"' + here('/gian-hang') + '>Gian hàng</a>' +
@@ -111,7 +111,7 @@
           '<a href="' + a('#noi-dung-chuong-trinh') + '">Agenda</a>' +
           '<a href="' + a('#ban-dieu-hanh-2027') + '">Ban điều hành 2027</a>' +
           '<a href="' + a('#cau-chuyen') + '">Lead Together</a>' +
-          '<a href="' + a('#chuong-trinh') + '">Chương trình</a>' +
+          '<a href="/khung-hinh/" target="_blank" rel="noopener"' + here('/khung-hinh') + '>Khung hình</a>' +
           '<a href="' + a('#nha-tai-tro') + '">Nhà tài trợ</a>' +
           /* TẠM ẨN: Gian hàng (xem chú thích ở nav)
           '<a href="/gian-hang/" target="_blank" rel="noopener"' + here('/gian-hang') + '>Gian hàng</a>' +

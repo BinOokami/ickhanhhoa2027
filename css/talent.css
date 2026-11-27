@@ -17,16 +17,17 @@
 .tl__msg:empty{display:none}
 .tl__msg.is-err{color:#ffb4a6}
 @media (max-width:560px){.tl__facts li{grid-template-columns:1fr;gap:4px}}
-/* đoạn dẫn trải rộng để gọn khoảng 2-3 dòng */
-.tl__lead{max-width:none}
-.tl__art{width:70%;margin:28px auto 0}
+/* đoạn dẫn trải ngang hết khung (1180px) để gọn 2 dòng trên máy tính; các khối còn lại giữ bề rộng 940px */
+.tl__lead{max-width:none;text-wrap:balance}
+/* ảnh bìa, các ô thông tin và form cùng một bề rộng */
+.tl__art,.tl__facts,.tl__form{width:min(820px,100%);margin-left:auto;margin-right:auto}
+.tl__art{margin-top:28px;margin-bottom:0}
 .tl__art img{display:block;width:100%;height:auto;border-radius:20px;box-shadow:0 24px 60px rgba(0,0,0,.4)}
 /* giải thưởng: làm nổi con số */
 .tl__prize{align-items:center;border-color:rgba(254,210,34,.6)!important;background:linear-gradient(100deg,rgba(254,99,1,.28),rgba(27,11,3,.55))!important}
 .tl__prize span small{font-size:12px;opacity:.75}
 .tl__prize strong{display:inline-block;margin-left:2px;font-family:var(--head);font-weight:700;text-transform:uppercase;font-size:clamp(34px,6vw,52px);line-height:1.1;color:var(--gold);vertical-align:middle}
 .tl__prize em{display:block;font-style:normal;font-size:13.5px;opacity:.85}
-@media (max-width:640px){.tl__art{width:100%}}
 /* ô "Tên nhóm" nằm cùng hàng, bên cạnh nút Nhóm */
 .tl__group{flex:1 1 220px;display:flex;min-width:0}
 .tl__form .tl__group input{width:100%;height:auto;min-height:46px}
