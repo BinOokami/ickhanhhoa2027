@@ -10,7 +10,7 @@
 
   // cụm logo đơn vị (thứ tự: YBA HCM → JCI Vietnam → JCI Khanhhoa), nằm đầu thanh menu bên trái
   var PARTNERS =
-    '<a class="nav__partners" href="' + (home ? '#top' : '/') + '" aria-label="Về đầu trang chủ">' +
+    '<a class="nav__partners" href="#top" aria-label="Về đầu trang">' +
       '<img src="/assets/doi-tac/yba-hcm.png" alt="Hội Doanh nhân trẻ TP. Hồ Chí Minh (YBA HCM)" width="144" height="140">' +
       '<img src="/assets/doi-tac/jci-vietnam.png" alt="JCI Vietnam" width="291" height="140">' +
       '<img src="/assets/doi-tac/jci-khanhhoa.png" alt="JCI Khanhhoa" width="292" height="140">' +
@@ -26,11 +26,11 @@
         '<a class="nav__link" href="' + a('#ban-dieu-hanh-2027') + '">Ban điều hành 2027</a>' +
         '<a class="nav__link" href="' + a('#noi-dung-chuong-trinh') + '">Agenda</a>' +
       '</div>' +
-      '<a class="nav__logo" href="' + (home ? '#top' : '/') + '" aria-label="Lead Together: về trang chủ">' +
+      '<a class="nav__logo" href="#top" aria-label="Lead Together: về đầu trang">' +
         '<img src="/assets/logo-lead-together-nobg.webp" alt="Logo nhiệm kỳ 2027 JCI Khanhhoa, Lead Together" width="720" height="630"></a>' +
       '<div class="nav__side nav__side--r">' +
         '<a class="nav__link" href="' + a('#cau-chuyen') + '">Lead Together</a>' +
-        '<a class="nav__link" href="/khung-hinh/" target="_blank" rel="noopener"' + here('/khung-hinh') + '>Khung hình</a>' +
+        '<a class="nav__link" href="/khung-hinh/" target="_blank" rel="noopener"' + here('/khung-hinh') + '>Khung avatar</a>' +
         '<a class="nav__link" href="' + a('#nha-tai-tro') + '">Nhà tài trợ</a>' +
         /* TẠM ẨN: mục Gian hàng, chờ hoàn tất tích hợp. Mở lại bằng cách bỏ chú thích 2 dòng "Gian hàng" (nav + drawer)
         // '<a class="nav__link" href="/gian-hang/" target="_blank" rel="noopener"' + here('/gian-hang') + '>Gian hàng</a>' +
@@ -111,7 +111,7 @@
           '<a href="' + a('#noi-dung-chuong-trinh') + '">Agenda</a>' +
           '<a href="' + a('#ban-dieu-hanh-2027') + '">Ban điều hành 2027</a>' +
           '<a href="' + a('#cau-chuyen') + '">Lead Together</a>' +
-          '<a href="/khung-hinh/" target="_blank" rel="noopener"' + here('/khung-hinh') + '>Khung hình</a>' +
+          '<a href="/khung-hinh/" target="_blank" rel="noopener"' + here('/khung-hinh') + '>Khung avatar</a>' +
           '<a href="' + a('#nha-tai-tro') + '">Nhà tài trợ</a>' +
           /* TẠM ẨN: Gian hàng (xem chú thích ở nav)
           '<a href="/gian-hang/" target="_blank" rel="noopener"' + here('/gian-hang') + '>Gian hàng</a>' +
