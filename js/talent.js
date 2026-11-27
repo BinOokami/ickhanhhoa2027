@@ -10,24 +10,38 @@
   form.addEventListener('change',function(e){if(e.target.name==='kind') syncKind()});
   syncKind();
 
-  var sending=false;
+  // pop-up trạng thái: đang xử lý (không đóng được) -> kết quả (có nút Đóng)
+  var ov=document.getElementById('ov'),box=document.getElementById('ovBox'),spin=document.getElementById('ovSpin'),
+      txt=document.getElementById('ovText'),ovBtn=document.getElementById('ovBtn');
+  var show=function(t,loading){
+    txt.textContent=t;spin.hidden=!loading;ovBtn.hidden=loading;
+    ov.hidden=false;document.body.style.overflow='hidden';(loading?box:ovBtn).focus();
+  };
+  var hide=function(){ov.hidden=true;document.body.style.overflow=''};
+  ovBtn.addEventListener('click',hide);
+
+  // gửi thành công: GIỮ nguyên nội dung đã điền và khóa nút cho tới khi tải lại trang (F5)
+  var sending=false,done=false;
+  btn.disabled=false;   // một số trình duyệt nhớ trạng thái khóa sau khi tải lại
   form.addEventListener('submit',async function(e){
     e.preventDefault();
-    if(sending) return;
+    if(sending||done) return;
     var fd=new FormData(form),t=function(k){return String(fd.get(k)||'').trim()};
     if(t('fullName').length<2) return say('Vui lòng nhập họ và tên.',true);
     if(t('kind')==='nhom'&&!t('groupName')) return say('Vui lòng nhập tên nhóm.',true);
     if(t('performance').length<3) return say('Vui lòng mô tả tiết mục.',true);
-    sending=true;btn.disabled=true;say('Đang gửi...');
+    sending=true;btn.disabled=true;say('');
+    show('Thông tin đang được xử lý, vui lòng không đóng trang.',true);
     try{
       await API.registerTalent({fullName:t('fullName'),kind:t('kind'),
         groupName:t('kind')==='nhom'?t('groupName'):'',performance:t('performance'),support:t('support'),website:t('website')});
-      form.reset();syncKind();form.classList.remove('was-validated');
-      say(window.APP_CONFIG.MODE==='local'?'Đã ghi nhận thử (chế độ thử), chưa lưu lên máy chủ.':'BTC sẽ sớm liên hệ để hỗ trợ các anh, chị hoàn thiện việc đăng ký.');
+      done=true;
+      show(window.APP_CONFIG.MODE==='local'?'Đã ghi nhận thử (chế độ thử), chưa lưu lên máy chủ.':'BTC sẽ sớm liên hệ để hỗ trợ các anh, chị hoàn thiện việc đăng ký.',false);
     }catch(err){
-      say(err.message||'Có lỗi xảy ra, vui lòng thử lại.',true);
+      btn.disabled=false;
+      show(err.message||'Có lỗi xảy ra, vui lòng thử lại.',false);
     }
-    sending=false;btn.disabled=false;
+    sending=false;
   });
   // trình duyệt chặn gửi vì thiếu/sai ô: tô đỏ các ô lỗi
   form.addEventListener('invalid',function(){form.classList.add('was-validated')},true);

@@ -82,10 +82,19 @@
   </section>
 </main>
 
+<!-- pop-up trạng thái gửi: đang xử lý -> kết quả -->
+<div class="ov" id="ov" role="dialog" aria-modal="true" aria-live="assertive" aria-label="Trạng thái đăng ký" hidden>
+  <div class="ov__box" id="ovBox" tabindex="-1">
+    <div class="ov__spin" id="ovSpin"></div>
+    <p class="ov__text" id="ovText"></p>
+    <button class="btn ov__btn" id="ovBtn" type="button" hidden>Đóng</button>
+  </div>
+</div>
+
 <div id="site-foot"></div>
 <script src="/js/config.js?v=talent1"></script>
 <script src="/js/api.js?v=talent1"></script>
 <script src="/js/layout.js?v=6"></script>
-<script src="/js/talent.js?v=2"></script>
+<script src="/js/talent.js?v=3"></script>
 </body>
 </html>
