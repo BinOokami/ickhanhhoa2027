@@ -43,9 +43,17 @@
     }
     sending=false;
   });
-  // mô tả quá ngắn: thay câu báo mặc định của trình duyệt
-  var mota=document.getElementById('t-mota');
-  mota.addEventListener('input',function(){var n=mota.value.trim().length;mota.setCustomValidity(mota.value&&n<3?'Vui lòng mô tả thêm':'')});
+  // câu báo lỗi tiếng Việt thay cho câu mặc định của trình duyệt ('' = ô hợp lệ)
+  var ten=document.getElementById('t-ten'),mota=document.getElementById('t-mota');
+  var checkFields=function(){
+    var n=ten.value.trim().length,m=mota.value.trim().length;
+    ten.setCustomValidity(!ten.value?'Vui lòng nhập họ và tên':n<2?'Vui lòng nhập đầy đủ họ và tên':'');
+    groupName.setCustomValidity(form.kind.value==='nhom'&&!groupName.value.trim()?'Vui lòng nhập tên nhóm':'');
+    mota.setCustomValidity(!mota.value?'Vui lòng mô tả tiết mục':m<3?'Vui lòng mô tả thêm':'');
+  };
+  form.addEventListener('input',checkFields);
+  form.addEventListener('change',checkFields);
+  checkFields();
   // trình duyệt chặn gửi vì thiếu/sai ô: tô đỏ các ô lỗi
   form.addEventListener('invalid',function(){form.classList.add('was-validated')},true);
 })();

@@ -31,3 +31,15 @@
 /* ô "Tên nhóm" nằm cùng hàng, bên cạnh nút Nhóm */
 .tl__group{flex:1 1 220px;display:flex;min-width:0}
 .tl__form .tl__group input{width:100%;height:auto;min-height:46px}
+/* hover nút "Đăng ký tiết mục": nhấc lên, phát sáng cam và có vệt sáng lướt ngang (nút đã khóa thì không) */
+.tl__form .reg__submit .btn{position:relative;overflow:hidden;transition:transform .25s,box-shadow .25s,filter .25s}
+.tl__form .reg__submit .btn::after{content:"";position:absolute;top:0;bottom:0;left:-60%;width:40%;transform:skewX(-20deg);pointer-events:none;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.55),transparent);transition:left .55s ease}
+.tl__form .reg__submit .btn:not(:disabled):hover,.tl__form .reg__submit .btn:not(:disabled):focus-visible{transform:translateY(-3px) scale(1.03);box-shadow:0 12px 32px rgba(254,99,1,.55);filter:brightness(1.08)}
+.tl__form .reg__submit .btn:not(:disabled):hover::after,.tl__form .reg__submit .btn:not(:disabled):focus-visible::after{left:130%}
+.tl__form .reg__submit .btn:not(:disabled):active{transform:translateY(-1px) scale(.99)}
+@media (prefers-reduced-motion:reduce){
+  .tl__form .reg__submit .btn,.tl__form .reg__submit .btn::after{transition:none}
+  .tl__form .reg__submit .btn:not(:disabled):hover{transform:none}
+  .tl__form .reg__submit .btn::after{display:none}
+}
