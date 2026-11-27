@@ -10,7 +10,7 @@
 
   // cụm logo đơn vị (thứ tự: YBA HCM → JCI Vietnam → JCI Khanhhoa), nằm đầu thanh menu bên trái
   var PARTNERS =
-    '<a class="nav__partners" href="#top" aria-label="Về đầu trang">' +
+    '<a class="nav__partners" href="' + (home ? '#top' : '/') + '" aria-label="Về trang chủ">' +
       '<img src="/assets/doi-tac/yba-hcm.png" alt="Hội Doanh nhân trẻ TP. Hồ Chí Minh (YBA HCM)" width="144" height="140">' +
       '<img src="/assets/doi-tac/jci-vietnam.png" alt="JCI Vietnam" width="291" height="140">' +
       '<img src="/assets/doi-tac/jci-khanhhoa.png" alt="JCI Khanhhoa" width="292" height="140">' +
