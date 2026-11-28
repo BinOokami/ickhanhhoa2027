@@ -1,9 +1,9 @@
 {
- "_ghi_chu": "Dữ liệu trang /nha-tai-tro/. goi = 4 thẻ gói. nhom = bảng quyền lợi, mỗi dòng: [tên quyền lợi, Đồng, Bạc, Vàng, Kim Cương]. Giá chữ số là triệu đồng.",
+ "_ghi_chu": "Dữ liệu trang /nha-tai-tro/. goi = 4 thẻ gói. nhom = bảng quyền lợi, mỗi dòng: [tên quyền lợi, Đồng hành, Bạc, Vàng, Kim Cương]. Giá chữ số là triệu đồng.",
  "goi": [
   {
    "key": "dong",
-   "ten": "NTT Đồng",
+   "ten": "NTT Đồng hành",
    "gia": "1,5",
    "gala": "1 suất Gala",
    "ghi": ""
@@ -38,13 +38,20 @@
    "dong": [
     [
      "Logo trên POSM (poster, thiệp, ấn phẩm)",
-     "Các bài chính",
-     "Các bài chính",
+     "Vừa",
+     "Vừa",
+     "Lớn",
+     "Nổi bật"
+    ],
+    [
+     "Hiện diện trên các bài truyền thông xuyên suốt sự kiện",
+     "Tối thiểu 2 bài",
+     "Tối thiểu 3 bài",
      "Luôn có",
      "Luôn có"
     ],
     [
-     "Bài giới thiệu chung NTT (album, có chạy quảng cáo)",
+     "Bài giới thiệu chung NTT (album)",
      "Logo chung",
      "Logo chung",
      "Logo chung, to, nổi bật",
@@ -61,28 +68,14 @@
      "Hiện diện trên landing page sự kiện",
      "Danh sách chung",
      "Danh sách chung",
-     "Khu vực riêng: logo và 1 đoạn giới thiệu",
-     "Mục riêng: logo, 1 ảnh SP/DV và 1 đoạn giới thiệu"
-    ],
-    [
-     "Link từ landing page dẫn về trang chính thống (website, fanpage) của doanh nghiệp",
-     "Có",
-     "Có",
-     "Có",
-     "Có"
-    ],
-    [
-     "Hỗ trợ xây dựng landing page giới thiệu sản phẩm, dịch vụ của doanh nghiệp tại sự kiện",
-     "Có",
-     "Có",
-     "Có",
-     "Có"
+     "Khu vực chung lớn: logo và 1 đoạn giới thiệu ngắn",
+     "Mục riêng: logo và 1 đoạn giới thiệu ngắn"
     ],
     [
      "Gắn hashtag doanh nghiệp lên các bài truyền thông",
      "Không",
      "Không",
-     "Có",
+     "Không",
      "Có"
     ]
    ]
@@ -120,31 +113,10 @@
     ],
     [
      "Chiếu TVC tại khu gian hàng và teabreak",
-     "Tương đối",
-     "Tương đối",
-     "Nhiều",
-     "Nhiều nhất"
-    ],
-    [
-     "Vị trí ngồi đặc biệt tại sự kiện",
-     "Khu vực danh dự",
-     "Khu vực danh dự",
-     "Khu vực ưu tiên",
-     "Ưu tiên cao nhất"
-    ],
-    [
-     "MC nhắc tên cảm ơn trong phần lễ",
-     "Nhắc chung",
-     "Nhắc chung",
-     "Nhắc tên riêng",
-     "Nhắc tên riêng"
-    ],
-    [
-     "MC nhắc tên cảm ơn trong phần Gala",
-     "Nhắc tên riêng",
-     "Nhắc tên riêng",
-     "Nhắc tên riêng",
-     "Nhắc tên riêng"
+     "Không",
+     "Không",
+     "2 phút",
+     "3 phút"
     ],
     [
      "Trao chứng nhận tri ân NTT trong Gala",
@@ -161,7 +133,7 @@
      "3 suất"
     ],
     [
-     "Phát biểu hoặc giới thiệu SP/DV trong Gala",
+     "Phát biểu hoặc giới thiệu SP/DV trong Gala (3 phút)",
      "Không",
      "Không",
      "Không",
@@ -257,7 +229,7 @@
   ],
   [
    "Đồng hành tại sự kiện 26/12",
-   "Gian hàng, TVC, MC nhắc tên, chứng nhận tri ân. Sau sự kiện nhận bài cảm ơn."
+   "Gian hàng, quyền lợi theo gói, chứng nhận tri ân. Sau sự kiện nhận bài cảm ơn."
   ]
  ],
  "luuy": "Đơn vị đăng ký sau thời điểm đăng bài hoặc in ấn sẽ không nhận phần quyền lợi truyền thông trước sự kiện đã phát hành, vẫn hưởng đầy đủ quyền lợi trong và sau sự kiện."
